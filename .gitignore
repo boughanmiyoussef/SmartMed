@@ -32,7 +32,6 @@ pythonenv*
 Thumbs.db
 
 # Data files
-*.csv
 *.pkl
 *.pickle
 *.h5
