@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.pyc
+*.pyd
+*.pyo
+
+# Virtual Environments
+venv/
+env/
+jupyter_env/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.json
+*.db
+*.sqlite3
+
+# Model files
+models/*.pkl
+models/*.joblib
+
+# Logs
+*.log
+
+# Flask
+instance/
+.webassets-cache
+
+# Environment variables
+.env
+.env.local
+
+.ipynb_checkpoints/
+*.ipynb_checkpoints
