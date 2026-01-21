@@ -991,32 +991,29 @@
         }
 
         /* Diagnosis Button */
-.diagnose-button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2.5rem 0;
-    width: 100%;
-    min-height: 120px; /* Prevents layout shift */
-}
+        .diagnose-button-container {
+            text-align: center;
+            padding: 2rem 0;
+            position: center;
+        }
 
 .diagnose-btn {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     color: white;
     border: none;
-    padding: 1.3rem 3.5rem; /* Restore horizontal padding */
+    padding: 1.3rem 0; 
     font-size: 1.2rem;
     font-weight: 600;
     border-radius: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 380px;
-    /* Remove: position: fixed */
-    /* Remove: overflow: hidden (not needed without ::before) */
+    /* position: fixed; */
+    overflow: hidden;
     white-space: nowrap;
 }
         /* .diagnose-btn::before {
