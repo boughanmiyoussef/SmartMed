@@ -138,73 +138,21 @@ SmartMed/
 │   ├── diets.csv               # Diet recommendations
 │   └── workout_df.csv          # Exercise plans
 │
-├── templates/                   # Web interface templates
+├── templates/                   # Web interface template
 │   ├── index.html              # Main diagnosis page
-│   ├── about.html              # About page
-│   ├── blog.html               # Blog/Articles
-│   ├── contact.html            # Contact form
-│   └── developer.html          # Developer information
-│
-└── static/                      # Static assets (CSS, JS, images)
-    ├── css/
-    ├── js/
-    └── images/
-```
 
-## 🏗️ System Architecture
+ 
+Here's the updated section with Jupyter and VS Code included:
 
-<div style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; background: #f9f9f9; margin: 20px 0;">
-  <div style="text-align: center; font-weight: bold; margin-bottom: 10px; color: #2c3e50;">Presentation Layer</div>
-  <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap;">
-    <div style="padding: 15px; background: white; border-radius: 5px; border: 1px solid #3498db; min-width: 200px; text-align: center;">
-      <strong>Web UI</strong><br>
-      <small>Flask + Jinja2 + Bootstrap</small>
-    </div>
-  </div>
-
-  <div style="text-align: center; margin: 20px 0;">
-    <div style="display: inline-block; padding: 5px 15px; background: #3498db; color: white; border-radius: 20px;">▼</div>
-  </div>
-
-  <div style="text-align: center; font-weight: bold; margin-bottom: 10px; color: #2c3e50;">Business Logic Layer</div>
-  <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap;">
-    <div style="padding: 15px; background: white; border-radius: 5px; border: 1px solid #e74c3c; min-width: 200px; text-align: center;">
-      <strong>Prediction Engine</strong><br>
-      <small>SVC Model Inference</small>
-    </div>
-    <div style="padding: 15px; background: white; border-radius: 5px; border: 1px solid #e74c3c; min-width: 200px; text-align: center;">
-      <strong>Recommendation Engine</strong><br>
-      <small>Treatment Plan Generator</small>
-    </div>
-  </div>
-
-  <div style="text-align: center; margin: 20px 0;">
-    <div style="display: inline-block; padding: 5px 15px; background: #3498db; color: white; border-radius: 20px;">▼</div>
-  </div>
-
-  <div style="text-align: center; font-weight: bold; margin-bottom: 10px; color: #2c3e50;">Data Access Layer</div>
-  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-    <div style="padding: 15px; background: white; border-radius: 5px; border: 1px solid #27ae60; min-width: 200px; text-align: center;">
-      <strong>ML Models</strong><br>
-      <small>Pickle Serialization</small>
-    </div>
-    <div style="padding: 15px; background: white; border-radius: 5px; border: 1px solid #27ae60; min-width: 200px; text-align: center;">
-      <strong>Medical Database</strong><br>
-      <small>CSV Knowledge Base</small>
-    </div>
-  </div>
-</div>
-
-## 🛠️ Technology Stack
-
+```html
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
   <div style="border: 1px solid #3498db; border-radius: 8px; padding: 15px; text-align: center; background: white;">
     <strong>Flask 2.3.3</strong><br>
-    <small>Lightweight web framework</small>
+    <small>Web framework</small>
   </div>
   <div style="border: 1px solid #e74c3c; border-radius: 8px; padding: 15px; text-align: center; background: white;">
     <strong>Scikit-learn 1.3.2</strong><br>
-    <small>SVC ML algorithms</small>
+    <small>ML algorithms</small>
   </div>
   <div style="border: 1px solid #f39c12; border-radius: 8px; padding: 15px; text-align: center; background: white;">
     <strong>Pandas 2.1.4</strong><br>
@@ -222,13 +170,69 @@ SmartMed/
     <strong>Joblib 1.3.2</strong><br>
     <small>Model serialization</small>
   </div>
+  <div style="border: 1px solid #d35400; border-radius: 8px; padding: 15px; text-align: center; background: white;">
+    <strong>Jupyter</strong><br>
+    <small>Development & training</small>
+  </div>
+  <div style="border: 1px solid #007acc; border-radius: 8px; padding: 15px; text-align: center; background: white;">
+    <strong>VS Code</strong><br>
+    <small>Development IDE</small>
+  </div>
 </div>
+```
+
+And here's the complete updated section including a development tools description:
+
+```html
+## 🛠️ Technology Stack
+
+### Development Environment
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+  <div style="border: 1px solid #3498db; border-radius: 8px; padding: 15px; text-align: center; background: white;">
+    <strong>Flask 2.3.3</strong><br>
+    <small>Web framework</small>
+  </div>
+  <div style="border: 1px solid #e74c3c; border-radius: 8px; padding: 15px; text-align: center; background: white;">
+    <strong>Scikit-learn 1.3.2</strong><br>
+    <small>ML algorithms</small>
+  </div>
+  <div style="border: 1px solid #f39c12; border-radius: 8px; padding: 15px; text-align: center; background: white;">
+    <strong>Pandas 2.1.4</strong><br>
+    <small>Data manipulation</small>
+  </div>
+  <div style="border: 1px solid #9b59b6; border-radius: 8px; padding: 15px; text-align: center; background: white;">
+    <strong>NumPy 1.24.4</strong><br>
+    <small>Numerical computing</small>
+  </div>
+  <div style="border: 1px solid #1abc9c; border-radius: 8px; padding: 15px; text-align: center; background: white;">
+    <strong>Bootstrap 5.3</strong><br>
+    <small>Frontend framework</small>
+  </div>
+  <div style="border: 1px solid #34495e; border-radius: 8px; padding: 15px; text-align: center; background: white;">
+    <strong>Joblib 1.3.2</strong><br>
+    <small>Model serialization</small>
+  </div>
+  <div style="border: 1px solid #d35400; border-radius: 8px; padding: 15px; text-align: center; background: white;">
+    <strong>Jupyter</strong><br>
+    <small>Development & training</small>
+  </div>
+  <div style="border: 1px solid #007acc; border-radius: 8px; padding: 15px; text-align: center; background: white;">
+    <strong>VS Code</strong><br>
+    <small>Development IDE</small>
+  </div>
+</div>
+
+### Development Tools Used
+- **Jupyter Notebook**: For ML model training, experimentation, and data exploration
+- **Visual Studio Code**: Primary IDE for Flask development and code management
+- **Git & GitHub**: Version control and collaboration
 
 ### ML Approach
 - **Algorithm**: Support Vector Classifier (SVC) with linear kernel
 - **Type**: Supervised learning for multi-class classification
 - **Architecture**: Classical machine learning (not deep learning)
 - **Focus**: Interpretability and efficiency over complex neural networks
+```
 
 ## 📊 Dataset Details
 
