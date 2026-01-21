@@ -1,3 +1,5 @@
+I'll integrate the system architecture diagram into the README and organize it properly. Here's the updated version:
+
 # 🏥 SmartMed AI – AI-Powered Medical Diagnosis Platform
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)
@@ -15,10 +17,10 @@
 ## 📌 Table of Contents
 - [Overview](#-overview)
 - [Key Features](#-key-features)
+- [System Architecture](#-system-architecture)
 - [Live Demo](#-live-demo)
 - [Quick Start](#-quick-start)
 - [Project Structure](#-project-structure)
-- [System Architecture](#-system-architecture)
 - [Technology Stack](#-technology-stack)
 - [Dataset Details](#-dataset-details)
 - [Model Performance](#-model-performance)
@@ -26,8 +28,6 @@
 - [Usage Examples](#-usage-examples)
 - [Technical Specifications](#-technical-specifications)
 - [Development Setup](#-development-setup)
-- [Testing](#-testing)
-- [Future Roadmap](#-future-roadmap)
 - [Contributing](#-contributing)
 - [Security & Privacy](#-security--privacy)
 - [Medical Disclaimer](#-medical-disclaimer)
@@ -69,6 +69,43 @@ SmartMed AI is an advanced machine learning-powered medical diagnosis system tha
     <p>Modular architecture with clean separation of concerns, fast response times, and low memory footprint.</p>
   </div>
 </div>
+
+## 🏗️ System Architecture
+
+```
+┌───────────────────────┐
+│     Web Interface     │
+│   (Flask + Jinja2)    │
+│   ← renders index.html│
+└───────────┬───────────┘
+            │
+┌───────────▼───────────┐
+│   Prediction Engine   │
+│  • get_predicted_value()│
+│  • helper()           │
+└───────────┬───────────┘
+            │
+┌───────────▼───────────┐
+│   Data Layer          │
+│  • svc.pkl (SVC model)│
+│  • CSV knowledge base │
+└───────────────────────┘
+```
+
+### Architecture Components
+
+| Layer | Component | Description |
+|-------|-----------|-------------|
+| **Presentation Layer** | Web Interface | User-facing UI built with Flask and Bootstrap, renders HTML templates |
+| **Application Layer** | Prediction Engine | Core logic for processing symptoms and generating predictions |
+| **Data Layer** | ML Model & Knowledge Base | Pre-trained SVC model and CSV files containing medical knowledge |
+
+### Data Flow
+1. **User Input** → Symptoms entered via web interface
+2. **Processing** → Prediction Engine processes input using helper functions
+3. **Model Inference** → SVC model makes disease prediction
+4. **Knowledge Retrieval** → Relevant treatment data fetched from CSV files
+5. **Result Rendering** → Comprehensive diagnosis displayed in web interface
 
 ## 🌐 Live Demo
 
@@ -138,45 +175,8 @@ SmartMed/
 │   ├── diets.csv               # Diet recommendations
 │   └── workout_df.csv          # Exercise plans
 │
-├── templates/                   # Web interface template
-│   ├── index.html              # Main diagnosis page
-
- 
-```
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
-  <div style="border: 1px solid #3498db; border-radius: 8px; padding: 15px; text-align: center; background: white;">
-    <strong>Flask 2.3.3</strong><br>
-    <small>Web framework</small>
-  </div>
-  <div style="border: 1px solid #e74c3c; border-radius: 8px; padding: 15px; text-align: center; background: white;">
-    <strong>Scikit-learn 1.3.2</strong><br>
-    <small>ML algorithms</small>
-  </div>
-  <div style="border: 1px solid #f39c12; border-radius: 8px; padding: 15px; text-align: center; background: white;">
-    <strong>Pandas 2.1.4</strong><br>
-    <small>Data manipulation</small>
-  </div>
-  <div style="border: 1px solid #9b59b6; border-radius: 8px; padding: 15px; text-align: center; background: white;">
-    <strong>NumPy 1.24.4</strong><br>
-    <small>Numerical computing</small>
-  </div>
-  <div style="border: 1px solid #1abc9c; border-radius: 8px; padding: 15px; text-align: center; background: white;">
-    <strong>Bootstrap 5.3</strong><br>
-    <small>Frontend framework</small>
-  </div>
-  <div style="border: 1px solid #34495e; border-radius: 8px; padding: 15px; text-align: center; background: white;">
-    <strong>Joblib 1.3.2</strong><br>
-    <small>Model serialization</small>
-  </div>
-  <div style="border: 1px solid #d35400; border-radius: 8px; padding: 15px; text-align: center; background: white;">
-    <strong>Jupyter</strong><br>
-    <small>Development & training</small>
-  </div>
-  <div style="border: 1px solid #007acc; border-radius: 8px; padding: 15px; text-align: center; background: white;">
-    <strong>VS Code</strong><br>
-    <small>Development IDE</small>
-  </div>
-</div>
+└── templates/                   # Web interface template
+    └── index.html              # Main diagnosis page
 ```
 
 ## 🛠️ Technology Stack
@@ -207,27 +207,7 @@ SmartMed/
     <strong>Joblib 1.3.2</strong><br>
     <small>Model serialization</small>
   </div>
-  <div style="border: 1px solid #d35400; border-radius: 8px; padding: 15px; text-align: center; background: white;">
-    <strong>Jupyter</strong><br>
-    <small>Development & training</small>
-  </div>
-  <div style="border: 1px solid #007acc; border-radius: 8px; padding: 15px; text-align: center; background: white;">
-    <strong>VS Code</strong><br>
-    <small>Development IDE</small>
-  </div>
 </div>
-
-### Development Tools Used
-- **Jupyter Notebook**: For ML model training, experimentation, and data exploration
-- **Visual Studio Code**: Primary IDE for Flask development and code management
-- **Git & GitHub**: Version control and collaboration
-
-### ML Approach
-- **Algorithm**: Support Vector Classifier (SVC) with linear kernel
-- **Type**: Supervised learning for multi-class classification
-- **Architecture**: Classical machine learning (not deep learning)
-- **Focus**: Interpretability and efficiency over complex neural networks
-```
 
 ## 📊 Dataset Details
 
@@ -265,9 +245,6 @@ SmartMed/
 | Model | Accuracy | Precision | Recall | F1-Score | Training Time |
 |-------|----------|-----------|--------|----------|---------------|
 | **Support Vector Classifier (SVC)** | **100%** | **1.0000** | **1.0000** | **1.0000** | 2.3s |
-| Random Forest | 100% | 1.0000 | 1.0000 | 1.0000 | 4.8s |
-| Gradient Boosting | 100% | 1.0000 | 1.0000 | 1.0000 | 6.1s |
-| K-Nearest Neighbors | 100% | 1.0000 | 1.0000 | 1.0000 | 0.8s |
 
 **Note**: The 100% accuracy reflects perfect separation in this synthetic, clean dataset for educational purposes.
 
@@ -313,13 +290,6 @@ curl -X POST http://localhost:5000/predict \
   -d "symptoms=headache,fever,cough"
 ```
 
-#### 3. Debug Endpoints
-```http
-GET /test-symptom/<symptom>           # Test symptom formatting
-GET /debug/<disease>                  # View parsed disease data
-GET /doctor/<filename>                # Serve doctor images
-```
-
 ## 🎯 Usage Examples
 
 ### Web Interface Usage
@@ -328,27 +298,6 @@ GET /doctor/<filename>                # Serve doctor images
 3. **Submit for Analysis**: Click "Start AI Diagnosis"
 4. **Review Results**: View predicted disease and complete treatment plan
 5. **Start New Diagnosis**: Click "Start New Diagnosis" to clear and begin again
-
-### Python Integration
-```python
-from main import get_predicted_value, helper
-
-# Example 1: Basic disease prediction
-symptoms = ['headache', 'fever', 'fatigue', 'cough']
-disease = get_predicted_value(symptoms)
-print(f"Predicted Disease: {disease}")
-
-# Example 2: Complete treatment plan
-description, precautions, medications, diets, workouts = helper(disease)
-
-print("\n=== COMPLETE TREATMENT PLAN ===")
-print(f"Disease: {disease}")
-print(f"Description: {description}")
-print(f"Precautions: {', '.join(precautions)}")
-print(f"Medications: {', '.join(medications)}")
-print(f"Diet Recommendations: {', '.join(diets)}")
-print(f"Workout Suggestions: {', '.join(workouts)}")
-```
 
 ## ⚙️ Technical Specifications
 
@@ -395,77 +344,6 @@ pip install -r requirements.txt
 pip install black flake8 pytest
 ```
 
-#### 3. Code Style & Formatting
-```bash
-# Format code with Black
-black .
-
-# Check code style
-flake8 .
-
-# Run tests
-pytest
-```
-
-### Project Configuration
-
-#### Environment Variables
-Create a `.env` file:
-```env
-FLASK_APP=main.py
-FLASK_ENV=development
-SECRET_KEY=your-secret-key-here
-DEBUG=True
-PORT=5000
-```
-
-#### Running in Development Mode
-```bash
-# Enable debug mode
-export FLASK_ENV=development
-export FLASK_DEBUG=1
-
-# Run with auto-reload
-flask run --reload
-```
-
-## 🧪 Testing
-
-### Test Structure
-```
-tests/
-├── test_models.py      # ML model tests
-├── test_api.py        # API endpoint tests
-├── test_web.py        # Web interface tests
-└── conftest.py        # Test configuration
-```
-
-### Running Tests
-```bash
-# Run all tests
-python -m pytest
-
-# Run specific test file
-python -m pytest tests/test_api.py
-
-# Run with coverage report
-python -m pytest --cov=main --cov-report=html
-```
-
-## 🛣️ Future Roadmap
-
-### Phase 1: Enhanced AI Capabilities
-- [ ] **Explainable AI (XAI)**: SHAP/LIME for prediction explanations
-- [ ] **Confidence Scores**: Probability estimates for predictions
-
-### Phase 2: Platform Expansion
-- [ ] **Multi-language Support**: Internationalization
-- [ ] **API Rate Limiting**: Production-grade API management
-
-### Phase 3: Advanced Features
-- [ ] **Real-time Updates**: Live medical guideline integration
-- [ ] **Patient History**: Secure symptom history tracking
-
 ## 🤝 Contributing
 
 We welcome contributions! Here's how you can help:
@@ -491,11 +369,6 @@ We welcome contributions! Here's how you can help:
 - **No Personal Data**: System doesn't collect or store personal information
 - **Synthetic Dataset**: Only uses publicly available synthetic data
 - **Stateless Design**: No user tracking or session storage
-
-### Security Features
-- **Input Validation**: Sanitize all user inputs
-- **Secure Headers**: Implement security best practices
-- **Regular Updates**: Keep dependencies updated
 
 ## ⚠️ Medical Disclaimer
 
@@ -550,7 +423,6 @@ SOFTWARE.
 - **Name**: Youssef Boughanmi
 - **Email**: yussefboughanmy@gmail.com
 - **GitHub**: [@boughanmiyoussef](https://github.com/boughanmiyoussef)
-- **LinkedIn**: [Youssef Boughanmi](https://www.linkedin.com/in/youssef-boughanmi-4990222a0)
 
 ### Project Links
 - **Repository**: https://github.com/boughanmiyoussef/SmartMed
@@ -588,3 +460,5 @@ SOFTWARE.
 *Local AI-powered diagnosis demonstration*
 
 </div>
+
+---
