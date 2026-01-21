@@ -991,11 +991,14 @@
         }
 
         /* Diagnosis Button */
-        .diagnose-button-container {
-            text-align: center;
-            padding: 2rem 0;
-            position: center;
-        }
+.diagnose-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    width: 100%;
+    min-height: 100px;
+}
 
 .diagnose-btn {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
@@ -1008,11 +1011,10 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
-    display: inline-flex;
+    display: flex; /* ← CHANGED FROM inline-flex */
     align-items: center;
     justify-content: center;
     width: 450px;
-    /* position: fixed; */
     overflow: hidden;
     white-space: nowrap;
 }
