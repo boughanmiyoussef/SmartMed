@@ -15,6 +15,7 @@
 ## 📌 Table of Contents
 - [Overview](#-overview)
 - [Key Features](#-key-features)
+- [Screenshots](#-screenshots)
 - [System Architecture](#-system-architecture)
 - [Live Demo](#-live-demo)
 - [Quick Start](#-quick-start)
@@ -41,6 +42,59 @@ SmartMed AI is an advanced machine learning-powered medical diagnosis system tha
 - **Modern Web Interface**: Responsive, user-friendly design with real-time feedback
 - **Local Deployment**: Runs entirely on your machine for privacy and security
 - **Educational Focus**: Designed for AI/ML learning and healthcare technology demonstrations
+
+## 📸 Screenshots
+
+<div align="center">
+
+### SmartMed AI Interface Gallery
+
+<div class="screenshots-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
+  
+  <div class="screenshot-item" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="screenshots/screenshot1.png" alt="SmartMed AI Main Interface" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
+    <div style="padding: 15px;">
+      <h4 style="margin: 0 0 10px 0; color: #2c3e50;">🏠 Main Dashboard</h4>
+      <p style="margin: 0; color: #666; font-size: 14px;">Clean, intuitive interface for symptom input and diagnosis</p>
+    </div>
+  </div>
+
+  <div class="screenshot-item" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="screenshots/screenshot2.png" alt="Symptom Input Interface" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
+    <div style="padding: 15px;">
+      <h4 style="margin: 0 0 10px 0; color: #2c3e50;">🔍 Symptom Analysis</h4>
+      <p style="margin: 0; color: #666; font-size: 14px;">Real-time symptom search and selection interface</p>
+    </div>
+  </div>
+
+  <div class="screenshot-item" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="screenshots/screenshot3.png" alt="Diagnosis Results" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
+    <div style="padding: 15px;">
+      <h4 style="margin: 0 0 10px 0; color: #2c3e50;">📋 Diagnosis Results</h4>
+      <p style="margin: 0; color: #666; font-size: 14px;">Comprehensive disease prediction and analysis</p>
+    </div>
+  </div>
+
+  <div class="screenshot-item" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="screenshots/screenshot4.png" alt="Treatment Recommendations" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
+    <div style="padding: 15px;">
+      <h4 style="margin: 0 0 10px 0; color: #2c3e50;">💊 Treatment Plan</h4>
+      <p style="margin: 0; color: #666; font-size: 14px;">Detailed medications, diet, and exercise recommendations</p>
+    </div>
+  </div>
+
+  <div class="screenshot-item" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="screenshots/screenshot5.png" alt="Complete Care Plan" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
+    <div style="padding: 15px;">
+      <h4 style="margin: 0 0 10px 0; color: #2c3e50;">🏥 Complete Care Package</h4>
+      <p style="margin: 0; color: #666; font-size: 14px;">End-to-end healthcare recommendations and precautions</p>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
 
 ## ✨ Key Features
 

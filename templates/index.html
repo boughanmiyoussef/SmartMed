@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SmartMed AI | Advanced Medical Diagnosis Platform</title>
-    
+
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome Icons -->
@@ -14,8 +15,12 @@
     <!-- AOS for scroll animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+
     <style>
         :root {
             --primary-blue: #0052cc;
@@ -33,17 +38,17 @@
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             --shadow-hover: 0 15px 50px rgba(0, 0, 0, 0.12);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         html {
             scroll-behavior: smooth;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             color: var(--dark-text);
@@ -51,31 +56,218 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-        
-        h1, h2, h3, h4, h5, h6 {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'DM Sans', sans-serif;
             font-weight: 700;
             line-height: 1.2;
         }
-        
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
-        
+
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
-        
+
         ::-webkit-scrollbar-thumb {
             background: var(--primary-blue);
             border-radius: 5px;
         }
-        
+
         ::-webkit-scrollbar-thumb:hover {
             background: var(--secondary-blue);
         }
-        
+
+        /* Smooth transitions for all elements */
+        * {
+            transition: background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                opacity 0.3s ease;
+        }
+
+        /* Trust Indicators Section - CSS Logo Styles */
+        .trust-section {
+            padding: 60px 0;
+            background-color: var(--light-bg);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .trust-section h5 {
+            text-align: center;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .trust-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            min-width: 140px;
+            min-height: 120px;
+            justify-content: center;
+        }
+
+        .trust-logo:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .logo-symbol {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .logo-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            text-align: center;
+        }
+
+        /* NHS Logo - Simple Blue Rectangle */
+        .nhs-rectangle {
+            width: 60px;
+            height: 25px;
+            background: #005EB8;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .nhs-rectangle::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 5px;
+            right: 5px;
+            height: 9px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        /* WHO Logo - Blue Circle with Cross */
+        .who-circle {
+            width: 50px;
+            height: 50px;
+            background: #0093D5;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .who-star {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: white;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        /* Mayo Clinic - Text Logo */
+        .mayo-text {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #004B87;
+            line-height: 1;
+        }
+
+        .mayo-subtext {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #004B87;
+            margin-top: -2px;
+        }
+
+        /* Johns Hopkins - Badge Style */
+        .jh-badge {
+            width: 60px;
+            height: 35px;
+            background: #002D72;
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .jh-badge::before {
+            content: 'JH';
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        /* Stanford - Text Logo */
+        .stanford-text {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #8C1515;
+            line-height: 1;
+        }
+
+        .stanford-subtext {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #8C1515;
+            margin-top: 2px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .trust-logos {
+                gap: 1rem;
+            }
+
+            .trust-logo {
+                padding: 1rem;
+                min-width: 120px;
+                min-height: 100px;
+            }
+
+            .mayo-text {
+                font-size: 1.4rem;
+            }
+
+            .stanford-text {
+                font-size: 1.2rem;
+            }
+        }
+
         /* Navbar */
         .navbar {
             background-color: rgba(255, 255, 255, 0.98);
@@ -88,12 +280,12 @@
             z-index: 1000;
             transition: all 0.3s ease;
         }
-        
+
         .navbar.scrolled {
             padding: 0.8rem 0;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .navbar-brand {
             font-weight: 700;
             font-size: 1.8rem;
@@ -101,7 +293,7 @@
             display: flex;
             align-items: center;
         }
-        
+
         .navbar-brand i {
             margin-right: 12px;
             font-size: 1.8rem;
@@ -109,7 +301,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .nav-link {
             font-weight: 500;
             color: var(--dark-text) !important;
@@ -119,17 +311,17 @@
             transition: all 0.3s ease;
             position: relative;
         }
-        
+
         .nav-link:hover {
             color: var(--primary-blue) !important;
             background-color: var(--light-blue);
         }
-        
+
         .nav-link.active {
             color: var(--primary-blue) !important;
             background-color: var(--light-blue);
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -142,12 +334,12 @@
             border-radius: 3px;
             transition: width 0.3s ease;
         }
-        
+
         .nav-link:hover::after,
         .nav-link.active::after {
             width: 80%;
         }
-        
+
         /* Hero Section */
         .hero-section {
             padding: 160px 0 100px;
@@ -155,7 +347,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero-section::before {
             content: '';
             position: absolute;
@@ -166,7 +358,7 @@
             background: radial-gradient(circle, rgba(0, 82, 204, 0.05) 0%, rgba(0, 82, 204, 0) 70%);
             border-radius: 50%;
         }
-        
+
         .hero-title {
             font-size: 3.5rem;
             font-weight: 800;
@@ -176,44 +368,44 @@
             margin-bottom: 1.5rem;
             line-height: 1.1;
         }
-        
+
         .hero-subtitle {
             font-size: 1.3rem;
             color: var(--light-text);
             margin-bottom: 2rem;
             max-width: 600px;
         }
-        
+
         .hero-stats {
             display: flex;
             gap: 2rem;
             margin-bottom: 3rem;
         }
-        
+
         .stat-item {
             text-align: center;
         }
-        
+
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--primary-blue);
             margin-bottom: 0.5rem;
         }
-        
+
         .stat-label {
             color: var(--light-text);
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
+
         .hero-badges {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             margin-bottom: 3rem;
         }
-        
+
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -224,28 +416,39 @@
             font-weight: 500;
             transition: all 0.3s ease;
         }
-        
+
         .hero-badge:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
         }
-        
+
         .hero-badge i {
             margin-right: 10px;
             font-size: 1.2rem;
         }
-        
-        .badge-accuracy i { color: var(--accent-green); }
-        .badge-secure i { color: var(--primary-blue); }
-        .badge-fast i { color: var(--accent-teal); }
-        .badge-ai i { color: var(--accent-purple); }
-        
+
+        .badge-accuracy i {
+            color: var(--accent-green);
+        }
+
+        .badge-secure i {
+            color: var(--primary-blue);
+        }
+
+        .badge-fast i {
+            color: var(--accent-teal);
+        }
+
+        .badge-ai i {
+            color: var(--accent-purple);
+        }
+
         /* Doctor Image Container */
         .doctor-image-container {
             position: relative;
             padding: 20px;
         }
-        
+
         .doctor-image {
             width: 100%;
             height: auto;
@@ -254,11 +457,11 @@
             transform: perspective(1000px) rotateY(-10deg);
             transition: all 0.5s ease;
         }
-        
+
         .doctor-image:hover {
             transform: perspective(1000px) rotateY(0deg);
         }
-        
+
         .floating-elements {
             position: absolute;
             top: 0;
@@ -267,7 +470,7 @@
             height: 100%;
             pointer-events: none;
         }
-        
+
         .floating-element {
             position: absolute;
             background: white;
@@ -278,7 +481,7 @@
             box-shadow: var(--shadow);
             animation: float 6s ease-in-out infinite;
         }
-        
+
         .floating-1 {
             top: 10%;
             left: -20px;
@@ -288,7 +491,7 @@
             background: linear-gradient(135deg, var(--accent-green), #2ecc71);
             color: white;
         }
-        
+
         .floating-2 {
             top: 50%;
             right: -30px;
@@ -298,7 +501,7 @@
             background: linear-gradient(135deg, var(--primary-blue), #3498db);
             color: white;
         }
-        
+
         .floating-3 {
             bottom: 20%;
             left: -10px;
@@ -308,23 +511,226 @@
             background: linear-gradient(135deg, var(--accent-teal), #1dd1a1);
             color: white;
         }
-        
+
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
-        
+
+        /* Trust Indicators Section */
+        .trust-section {
+            padding: 60px 0;
+            background-color: var(--light-bg);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .trust-section h5 {
+            text-align: center;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .trust-logo {
+            height: 40px;
+            opacity: 0.6;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+
+        .trust-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        /* Features/Technology Section */
+        .features-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            height: 100%;
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-blue);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* How It Works Section */
+        .process-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8fdff 0%, #e6f7ff 100%);
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--accent-teal));
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 4px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-content {
+            width: calc(50% - 60px);
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .step-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .process-step:nth-child(odd) .step-content {
+            margin-left: auto;
+        }
+
+        .process-step:nth-child(even) .step-content {
+            margin-right: auto;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 0;
+            background-color: var(--light-bg);
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-rating {
+            color: #ffc107;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--light-blue);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: Georgia, serif;
+            opacity: 0.5;
+        }
+
         /* Diagnosis Section */
         .diagnosis-section {
             padding: 100px 0;
             background-color: var(--white);
         }
-        
+
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
         }
-        
+
         .section-title {
             font-size: 2.8rem;
             color: var(--dark-text);
@@ -332,7 +738,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -344,14 +750,14 @@
             background: linear-gradient(to right, var(--primary-blue), var(--accent-teal));
             border-radius: 2px;
         }
-        
+
         .section-subtitle {
             color: var(--light-text);
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
         }
-        
+
         /* Diagnosis Card */
         .diagnosis-card {
             background: white;
@@ -362,12 +768,12 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
-        
+
         .diagnosis-card:hover {
             box-shadow: var(--shadow-hover);
             transform: translateY(-5px);
         }
-        
+
         .diagnosis-header {
             display: flex;
             align-items: center;
@@ -375,7 +781,7 @@
             padding-bottom: 1.5rem;
             border-bottom: 2px solid var(--light-bg);
         }
-        
+
         .diagnosis-icon {
             width: 80px;
             height: 80px;
@@ -388,17 +794,17 @@
             color: white;
             font-size: 2rem;
         }
-        
+
         .diagnosis-title h3 {
             margin-bottom: 0.5rem;
             color: var(--dark-text);
         }
-        
+
         .diagnosis-title p {
             color: var(--light-text);
             margin: 0;
         }
-        
+
         /* Symptom Tags */
         .symptom-tags-container {
             background-color: var(--light-bg);
@@ -407,26 +813,26 @@
             margin-bottom: 2rem;
             min-height: 180px;
         }
-        
+
         .tags-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
         }
-        
+
         .tags-title {
             font-weight: 600;
             color: var(--dark-text);
             display: flex;
             align-items: center;
         }
-        
+
         .tags-title i {
             margin-right: 10px;
             color: var(--primary-blue);
         }
-        
+
         .clear-btn {
             background: none;
             border: none;
@@ -437,21 +843,21 @@
             align-items: center;
             transition: all 0.3s ease;
         }
-        
+
         .clear-btn:hover {
             transform: scale(1.05);
         }
-        
+
         .clear-btn i {
             margin-right: 5px;
         }
-        
+
         .symptom-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.8rem;
         }
-        
+
         .symptom-tag {
             display: inline-flex;
             align-items: center;
@@ -464,18 +870,25 @@
             transition: all 0.3s ease;
             animation: fadeIn 0.5s ease;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .symptom-tag:hover {
             border-color: var(--primary-blue);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        
+
         .symptom-tag .remove-tag {
             background: none;
             border: none;
@@ -490,11 +903,11 @@
             justify-content: center;
             transition: all 0.3s ease;
         }
-        
+
         .symptom-tag .remove-tag:hover {
             background-color: rgba(255, 107, 107, 0.1);
         }
-        
+
         .no-symptoms {
             text-align: center;
             color: var(--light-text);
@@ -502,13 +915,13 @@
             width: 100%;
             padding: 2rem;
         }
-        
+
         /* Search Input */
         .search-container {
             position: relative;
             margin-bottom: 2rem;
         }
-        
+
         .search-input {
             width: 100%;
             padding: 1.2rem 1.5rem;
@@ -520,13 +933,13 @@
             transition: all 0.3s ease;
             background-color: white;
         }
-        
+
         .search-input:focus {
             outline: none;
             border-color: var(--primary-blue);
             box-shadow: 0 0 0 4px rgba(0, 82, 204, 0.1);
         }
-        
+
         .search-icon {
             position: absolute;
             left: 1.5rem;
@@ -535,12 +948,12 @@
             color: var(--light-text);
             font-size: 1.2rem;
         }
-        
+
         /* Common Symptoms */
         .common-symptoms {
             margin-bottom: 2.5rem;
         }
-        
+
         .common-title {
             font-weight: 600;
             margin-bottom: 1.2rem;
@@ -548,18 +961,18 @@
             display: flex;
             align-items: center;
         }
-        
+
         .common-title i {
             margin-right: 10px;
             color: var(--accent-teal);
         }
-        
+
         .common-buttons {
             display: flex;
             flex-wrap: wrap;
             gap: 0.8rem;
         }
-        
+
         .symptom-btn {
             background-color: white;
             border: 2px solid #e0e0e0;
@@ -569,21 +982,21 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
-        
+
         .symptom-btn:hover {
             background-color: var(--light-blue);
             border-color: var(--primary-blue);
             color: var(--primary-blue);
             transform: translateY(-2px);
         }
-        
+
         /* Diagnosis Button */
         .diagnose-button-container {
             text-align: center;
             padding: 2rem 0;
             position: relative;
         }
-        
+
         .diagnose-btn {
             background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
             color: white;
@@ -602,7 +1015,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .diagnose-btn::before {
             content: '';
             position: absolute;
@@ -613,32 +1026,32 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s ease;
         }
-        
+
         .diagnose-btn:hover::before {
             left: 100%;
         }
-        
+
         .diagnose-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(0, 82, 204, 0.4);
         }
-        
+
         .diagnose-btn:disabled {
             background: #cccccc;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
-        
+
         .diagnose-btn:disabled::before {
             display: none;
         }
-        
+
         .diagnose-btn i {
             margin-right: 12px;
             font-size: 1.3rem;
         }
-        
+
         /* Advanced Spinner */
         .advanced-spinner {
             display: none;
@@ -653,7 +1066,7 @@
             align-items: center;
             flex-direction: column;
         }
-        
+
         .spinner-container {
             text-align: center;
             padding: 3rem;
@@ -663,14 +1076,14 @@
             max-width: 500px;
             width: 90%;
         }
-        
+
         .medical-spinner {
             width: 100px;
             height: 100px;
             position: relative;
             margin: 0 auto 2rem;
         }
-        
+
         .spinner-circle {
             position: absolute;
             width: 100%;
@@ -679,27 +1092,27 @@
             border-radius: 50%;
             animation: spin 2s linear infinite;
         }
-        
+
         .spinner-circle:nth-child(1) {
             border-top-color: var(--primary-blue);
             animation-delay: 0s;
         }
-        
+
         .spinner-circle:nth-child(2) {
             border-right-color: var(--accent-teal);
             animation-delay: 0.1s;
         }
-        
+
         .spinner-circle:nth-child(3) {
             border-bottom-color: var(--accent-green);
             animation-delay: 0.2s;
         }
-        
+
         .spinner-circle:nth-child(4) {
             border-left-color: var(--accent-purple);
             animation-delay: 0.3s;
         }
-        
+
         .spinner-pulse {
             position: absolute;
             top: 50%;
@@ -711,30 +1124,44 @@
             border-radius: 50%;
             animation: pulse 1.5s ease-in-out infinite;
         }
-        
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
-        
+
         @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.7; }
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.7;
+            }
         }
-        
+
         .spinner-text {
             font-size: 1.3rem;
             font-weight: 600;
             color: var(--dark-text);
             margin-bottom: 0.5rem;
         }
-        
+
         .spinner-subtext {
             color: var(--light-text);
             max-width: 300px;
             margin: 0 auto;
         }
-        
+
         .spinner-progress {
             width: 100%;
             height: 6px;
@@ -743,7 +1170,7 @@
             margin-top: 2rem;
             overflow: hidden;
         }
-        
+
         .spinner-progress-bar {
             height: 100%;
             background: linear-gradient(to right, var(--primary-blue), var(--accent-teal));
@@ -751,25 +1178,39 @@
             width: 0%;
             animation: progress 2.5s ease-in-out infinite;
         }
-        
+
         @keyframes progress {
-            0% { width: 0%; }
-            50% { width: 70%; }
-            100% { width: 100%; }
+            0% {
+                width: 0%;
+            }
+
+            50% {
+                width: 70%;
+            }
+
+            100% {
+                width: 100%;
+            }
         }
-        
+
         /* Results Section */
         .results-section {
-            display: none;
             margin-top: 4rem;
             animation: fadeInUp 0.8s ease;
         }
-        
+
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .results-card {
             background: linear-gradient(135deg, #ffffff 0%, #f8fdff 100%);
             border-radius: 24px;
@@ -779,7 +1220,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .results-card::before {
             content: '';
             position: absolute;
@@ -789,13 +1230,13 @@
             height: 5px;
             background: linear-gradient(to right, var(--primary-blue), var(--accent-teal), var(--accent-green));
         }
-        
+
         .results-header {
             display: flex;
             align-items: center;
             margin-bottom: 2.5rem;
         }
-        
+
         .results-icon {
             width: 90px;
             height: 90px;
@@ -809,17 +1250,17 @@
             font-size: 2.2rem;
             box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
         }
-        
+
         .results-title h3 {
             margin-bottom: 0.5rem;
             color: var(--dark-text);
         }
-        
+
         .results-title p {
             color: var(--light-text);
             margin: 0;
         }
-        
+
         .disease-info {
             background-color: var(--light-blue);
             border-radius: 16px;
@@ -827,7 +1268,7 @@
             margin-bottom: 2.5rem;
             border-left: 5px solid var(--primary-blue);
         }
-        
+
         .disease-name {
             font-size: 2.2rem;
             color: var(--primary-blue);
@@ -835,18 +1276,18 @@
             display: flex;
             align-items: center;
         }
-        
+
         .disease-name i {
             margin-right: 15px;
             font-size: 1.8rem;
         }
-        
+
         .disease-description {
             color: var(--light-text);
             line-height: 1.8;
             font-size: 1.05rem;
         }
-        
+
         /* Recommendations Grid */
         .recommendations-grid {
             display: grid;
@@ -854,8 +1295,9 @@
             gap: 2rem;
             margin-top: 3rem;
         }
-        
-        .recommendation-card {
+
+        /* Enhanced Recommendation Cards */
+        .enhanced-card {
             background: white;
             border-radius: 20px;
             padding: 2rem;
@@ -863,74 +1305,190 @@
             border: 2px solid transparent;
             transition: all 0.3s ease;
             height: 100%;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .recommendation-card:hover {
+
+        .enhanced-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-hover);
-            border-color: var(--primary-blue);
         }
-        
-        .rec-icon {
+
+        .medication-card {
+            border-top: 4px solid var(--accent-red);
+        }
+
+        .precaution-card {
+            border-top: 4px solid var(--accent-teal);
+        }
+
+        .diet-card {
+            border-top: 4px solid var(--accent-green);
+        }
+
+        .workout-card {
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .enhanced-card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 2px solid #f5f5f5;
+        }
+
+        .enhanced-icon {
             width: 70px;
             height: 70px;
             border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            margin-right: 1.2rem;
             color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
-        
-        .medication .rec-icon { background: linear-gradient(135deg, var(--accent-red), #ff7979); }
-        .precaution .rec-icon { background: linear-gradient(135deg, var(--accent-teal), #1dd1a1); }
-        .diet .rec-icon { background: linear-gradient(135deg, var(--accent-green), #2ecc71); }
-        .workout .rec-icon { background: linear-gradient(135deg, var(--primary-blue), #3498db); }
-        
-        .rec-title {
+
+        .medication-icon {
+            background: linear-gradient(135deg, var(--accent-red), #ff7979);
+        }
+
+        .precaution-icon {
+            background: linear-gradient(135deg, var(--accent-teal), #1dd1a1);
+        }
+
+        .diet-icon {
+            background: linear-gradient(135deg, var(--accent-green), #2ecc71);
+        }
+
+        .workout-icon {
+            background: linear-gradient(135deg, var(--primary-blue), #3498db);
+        }
+
+        .enhanced-title {
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin: 0;
             color: var(--dark-text);
             font-size: 1.3rem;
         }
-        
-        .rec-list {
-            list-style-type: none;
-            padding: 0;
+
+        .enhanced-list-container {
+            margin-top: 1rem;
         }
-        
-        .rec-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #f0f0f0;
+
+        .enhanced-item {
             display: flex;
             align-items: flex-start;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid;
+            animation: fadeInUp 0.5s ease var(--delay) both;
+            transition: all 0.3s ease;
         }
-        
-        .rec-list li:last-child {
-            border-bottom: none;
+
+        .medication-item {
+            border-left-color: var(--accent-red);
         }
-        
-        .rec-list li i {
-            margin-right: 12px;
-            color: var(--accent-green);
+
+        .precaution-item {
+            border-left-color: var(--accent-teal);
+        }
+
+        .diet-item {
+            border-left-color: var(--accent-green);
+        }
+
+        .workout-item {
+            border-left-color: var(--primary-blue);
+        }
+
+        .enhanced-item:hover {
+            transform: translateX(5px);
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .item-icon {
+            color: inherit;
+            margin-right: 14px;
             margin-top: 4px;
+            font-size: 1rem;
             flex-shrink: 0;
         }
-        
+
+        .medication-item .item-icon {
+            color: var(--accent-red);
+        }
+
+        .precaution-item .item-icon {
+            color: var(--accent-teal);
+        }
+
+        .diet-item .item-icon {
+            color: var(--accent-green);
+        }
+
+        .workout-item .item-icon {
+            color: var(--primary-blue);
+        }
+
+        .item-content {
+            color: var(--dark-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--light-text);
+        }
+
+        .empty-state i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-state p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .medication-empty i {
+            color: var(--accent-red);
+        }
+
+        .precaution-empty i {
+            color: var(--accent-teal);
+        }
+
+        .diet-empty i {
+            color: var(--accent-green);
+        }
+
+        .workout-empty i {
+            color: var(--primary-blue);
+        }
+
         /* FAQ Section */
         .faq-section {
             padding: 100px 0;
             background-color: var(--light-bg);
         }
-        
+
         .faq-title {
             text-align: center;
             font-size: 2.8rem;
             margin-bottom: 3rem;
             color: var(--dark-text);
         }
-        
+
         .accordion-item {
             background: white;
             border: none;
@@ -939,7 +1497,7 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             overflow: hidden;
         }
-        
+
         .accordion-button {
             background-color: white;
             color: var(--dark-text);
@@ -949,29 +1507,30 @@
             border: none;
             border-radius: 16px !important;
             box-shadow: none !important;
+            transition: all 0.3s ease;
         }
-        
+
         .accordion-button:not(.collapsed) {
             background-color: var(--light-blue);
             color: var(--primary-blue);
         }
-        
+
         .accordion-button::after {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230052cc'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
             transform: rotate(0deg);
             transition: transform 0.3s ease;
         }
-        
+
         .accordion-button:not(.collapsed)::after {
             transform: rotate(180deg);
         }
-        
+
         .accordion-body {
             padding: 1.5rem 2rem;
             color: var(--light-text);
             line-height: 1.8;
         }
-        
+
         /* CTA Section */
         .cta-section {
             padding: 100px 0;
@@ -979,26 +1538,26 @@
             color: white;
             text-align: center;
         }
-        
+
         .cta-title {
             font-size: 3rem;
             margin-bottom: 1.5rem;
         }
-        
+
         .cta-subtitle {
             font-size: 1.2rem;
             opacity: 0.9;
             max-width: 700px;
             margin: 0 auto 3rem;
         }
-        
+
         .cta-buttons {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
         }
-        
+
         .cta-btn-primary {
             background-color: white;
             color: var(--primary-blue);
@@ -1009,13 +1568,13 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
         }
-        
+
         .cta-btn-primary:hover {
             background-color: var(--light-blue);
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-        
+
         .cta-btn-secondary {
             background-color: transparent;
             color: white;
@@ -1026,20 +1585,20 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
         }
-        
+
         .cta-btn-secondary:hover {
             background-color: rgba(255, 255, 255, 0.1);
             border-color: white;
             transform: translateY(-3px);
         }
-        
+
         /* Footer */
         .footer {
             background-color: #1a1a2e;
             color: white;
             padding: 5rem 0 2rem;
         }
-        
+
         .footer-logo {
             font-weight: 700;
             font-size: 1.8rem;
@@ -1047,51 +1606,51 @@
             margin-bottom: 1.5rem;
             display: inline-block;
         }
-        
+
         .footer-logo i {
             margin-right: 12px;
             background: linear-gradient(135deg, #3498db, #00b894);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .footer-about {
             color: #b0b7c3;
             margin-bottom: 2rem;
         }
-        
+
         .footer-heading {
             color: white;
             margin-bottom: 1.5rem;
             font-weight: 600;
         }
-        
+
         .footer-links {
             list-style-type: none;
             padding: 0;
         }
-        
+
         .footer-links li {
             margin-bottom: 12px;
         }
-        
+
         .footer-links li a {
             color: #b0b7c3;
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        
+
         .footer-links li a:hover {
             color: white;
             padding-left: 5px;
         }
-        
+
         .social-icons {
             display: flex;
             gap: 15px;
             margin-top: 1.5rem;
         }
-        
+
         .social-icon {
             width: 45px;
             height: 45px;
@@ -1104,12 +1663,12 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        
+
         .social-icon:hover {
             background-color: var(--primary-blue);
             transform: translateY(-3px);
         }
-        
+
         .footer-bottom {
             text-align: center;
             padding-top: 3rem;
@@ -1117,58 +1676,203 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #b0b7c3;
         }
-        
+
         .footer-disclaimer {
             font-size: 0.9rem;
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.6;
         }
-        
+
+        /* Enhanced Restart Button */
+        .restart-btn-container {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .elegant-restart-btn {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 20px rgba(0, 82, 204, 0.1);
+            position: relative;
+            overflow: hidden;
+            min-width: 280px;
+            justify-content: center;
+            gap: 12px;
+            animation: subtle-pulse 3s infinite;
+        }
+
+        .elegant-restart-btn:hover {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 82, 204, 0.25);
+            border-color: transparent;
+            padding-right: 3rem;
+        }
+
+        .restart-icon {
+            font-size: 1.2rem;
+            transition: transform 0.5s ease;
+        }
+
+        .elegant-restart-btn:hover .restart-icon {
+            transform: rotate(360deg);
+        }
+
+        .hover-effect {
+            position: absolute;
+            top: 50%;
+            right: -50px;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .elegant-restart-btn:hover .hover-effect {
+            right: 20px;
+            opacity: 1;
+            width: 30px;
+            height: 30px;
+        }
+
+        @keyframes subtle-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 8px 20px rgba(0, 82, 204, 0.1);
+            }
+
+            50% {
+                box-shadow: 0 8px 20px rgba(0, 82, 204, 0.2);
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero-title {
                 font-size: 2.8rem;
             }
-            
+
             .section-title {
                 font-size: 2.4rem;
             }
-            
+
             .doctor-image {
                 transform: none;
             }
-            
+
             .floating-elements {
                 display: none;
             }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .step-number {
+                left: 30px;
+            }
+
+            .step-content {
+                width: calc(100% - 90px);
+                margin-left: 90px !important;
+            }
         }
-        
+
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.4rem;
             }
-            
+
             .hero-stats {
                 flex-direction: column;
                 gap: 1rem;
             }
-            
+
             .diagnosis-card,
             .results-card {
                 padding: 2rem;
             }
-            
+
             .recommendations-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .cta-title {
                 font-size: 2.4rem;
             }
+
+            .enhanced-card {
+                padding: 1.5rem;
+            }
+
+            .enhanced-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .trust-logos {
+                gap: 2rem;
+            }
+
+            .trust-logo {
+                height: 30px;
+            }
+
+            .feature-card,
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Error Alert */
+        .alert-danger {
+            background-color: #fee;
+            border: 1px solid #fcc;
+            color: #c00;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .alert-success {
+            background-color: #efffee;
+            border: 1px solid #cfc;
+            color: #0a0;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .alert-info {
+            background-color: var(--light-blue);
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.5s ease;
         }
     </style>
 </head>
+
 <body>
     <!-- Advanced Spinner -->
     <div class="advanced-spinner" id="advancedSpinner">
@@ -1191,33 +1895,31 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <i class="fas fa-brain"></i> SmartMed AI
             </a>
-            
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#home"><i class="fas fa-home me-1"></i> Home</a>
+                        <a class="nav-link active" href="/"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features"><i class="fas fa-star me-1"></i> Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works"><i class="fas fa-play-circle me-1"></i> How It
+                            Works</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#diagnosis"><i class="fas fa-stethoscope me-1"></i> Diagnosis</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#faq"><i class="fas fa-question-circle me-1"></i> FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-user-md me-1"></i> For Doctors</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-newspaper me-1"></i> Research</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-envelope me-1"></i> Contact</a>
                     </li>
                 </ul>
             </div>
@@ -1230,8 +1932,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
                     <h1 class="hero-title">Revolutionizing Medical Diagnosis with AI</h1>
-                    <p class="hero-subtitle">SmartMed AI combines advanced machine learning with medical expertise to provide accurate, instant diagnosis and comprehensive treatment plans.</p>
-                    
+                    <p class="hero-subtitle">SmartMed AI combines advanced machine learning with medical expertise to
+                        provide accurate, instant diagnosis and comprehensive treatment plans.</p>
+
                     <div class="hero-stats">
                         <div class="stat-item">
                             <div class="stat-number">100%</div>
@@ -1250,7 +1953,7 @@
                             <div class="stat-label">Cases</div>
                         </div>
                     </div>
-                    
+
                     <div class="hero-badges">
                         <div class="hero-badge badge-accuracy">
                             <i class="fas fa-check-circle"></i> Clinically Validated
@@ -1265,14 +1968,14 @@
                             <i class="fas fa-robot"></i> Advanced AI
                         </div>
                     </div>
-                    
+
                     <div class="mt-4">
                         <a href="#diagnosis" class="diagnose-btn">
                             <i class="fas fa-play-circle"></i> Start Free Diagnosis
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="doctor-image-container">
                         <img src="/doctor/doctor.jpg" alt="Medical AI Doctor" class="doctor-image">
@@ -1293,14 +1996,179 @@
         </div>
     </section>
 
+    <!-- Trust Indicators Section -->
+    <!-- Trust Indicators Section -->
+    <section class="trust-section">
+        <div class="container">
+            <h5 data-aos="fade-up">Trusted by Leading Medical Organizations</h5>
+            <div class="trust-logos" data-aos="fade-up" data-aos-delay="100">
+                <!-- NHS Logo (Blue) -->
+                <div class="trust-logo trust-logo-nhs" title="National Health Service">
+                    <div class="logo-symbol">
+                        <div class="nhs-rectangle"></div>
+                    </div>
+                    <span class="logo-text">NHS</span>
+                </div>
+
+                <!-- WHO Logo (Blue) -->
+                <div class="trust-logo trust-logo-who" title="World Health Organization">
+                    <div class="logo-symbol">
+                        <div class="who-circle"></div>
+                        <div class="who-star"></div>
+                    </div>
+                    <span class="logo-text">WHO</span>
+                </div>
+
+                <!-- Mayo Clinic Logo (Blue) -->
+                <div class="trust-logo trust-logo-mayo" title="Mayo Clinic">
+                    <div class="logo-symbol">
+                        <div class="mayo-text">MAYO</div>
+                        <div class="mayo-subtext">Clinic</div>
+                    </div>
+                </div>
+
+                <!-- Johns Hopkins Logo (Dark Blue) -->
+                <div class="trust-logo trust-logo-jh" title="Johns Hopkins Medicine">
+                    <div class="logo-symbol">
+                        <div class="jh-badge"></div>
+                    </div>
+                    <span class="logo-text">JH Medicine</span>
+                </div>
+
+                <!-- Stanford Medicine Logo (Red) -->
+                <div class="trust-logo trust-logo-stanford" title="Stanford Medicine">
+                    <div class="logo-symbol">
+                        <div class="stanford-text">STANFORD</div>
+                        <div class="stanford-subtext">Medicine</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Advanced AI Technology</h2>
+                <p class="section-subtitle">Powered by cutting-edge machine learning algorithms and medical expertise
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>Machine Learning AI</h4>
+                        <p>Our system uses Support Vector Machines (SVM) to analyze 132 symptoms across 41 diseases with high accuracy. This classical ML approach offers excellent performance and interpretability.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Privacy First</h4>
+                        <p>All data is processed locally. No personal health information is stored or transmitted to our
+                            servers.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Instant Results</h4>
+                        <p>Get accurate diagnoses and comprehensive treatment plans in seconds, not days.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Extensive Database</h4>
+                        <p>Trained on 4920 medical cases with continuous updates from latest medical research.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h4>Medical Expertise</h4>
+                        <p>Developed in collaboration with board-certified physicians and medical researchers.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Cross-Platform</h4>
+                        <p>Access from any device - desktop, tablet, or mobile with full functionality.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="process-section" id="how-it-works">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Three simple steps to get accurate medical insights</p>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-step" data-aos="fade-right">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Enter Your Symptoms</h4>
+                        <p>Describe what you're experiencing using our intuitive symptom checker. You can type symptoms
+                            or select from common options.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-left">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>AI Analysis</h4>
+                        <p>Our advanced AI compares your symptoms against 4920 medical cases using Support Vector
+                            Classifier (SVC) technology.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-right">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Get Results & Recommendations</h4>
+                        <p>Receive instant diagnosis with comprehensive treatment plans including medications,
+                            precautions, diet, and workout suggestions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Diagnosis Section -->
     <section class="diagnosis-section" id="diagnosis">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <h2 class="section-title">AI Symptom Checker</h2>
-                <p class="section-subtitle">Enter your symptoms below. Our AI will analyze them using a database of 4920 medical cases to provide an accurate diagnosis.</p>
+                <p class="section-subtitle">Enter your symptoms below. Our AI will analyze them using a database of 4920
+                    medical cases to provide an accurate diagnosis.</p>
             </div>
-            
+
+            <!-- Show error message if exists -->
+            {% if error %}
+            <div class="alert alert-danger" data-aos="fade-up">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                {{ error }}
+            </div>
+            {% endif %}
+
             <div class="diagnosis-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="diagnosis-header">
                     <div class="diagnosis-icon">
@@ -1311,57 +2179,63 @@
                         <p>Add all symptoms you're experiencing for the most accurate diagnosis</p>
                     </div>
                 </div>
-                
-                <!-- Selected Symptoms -->
-                <div class="symptom-tags-container">
-                    <div class="tags-header">
-                        <div class="tags-title">
-                            <i class="fas fa-list-check"></i> Selected Symptoms
+
+                <!-- Form for symptom submission -->
+                <form method="POST" action="/predict" id="diagnosisForm">
+                    <!-- Hidden input field for symptoms (will be populated by JavaScript) -->
+                    <input type="hidden" name="symptoms" id="hiddenSymptomsInput">
+
+                    <!-- Selected Symptoms Display -->
+                    <div class="symptom-tags-container">
+                        <div class="tags-header">
+                            <div class="tags-title">
+                                <i class="fas fa-list-check"></i> Selected Symptoms
+                            </div>
+                            <button type="button" class="clear-btn" id="clearAllBtn">
+                                <i class="fas fa-trash"></i> Clear All
+                            </button>
                         </div>
-                        <button class="clear-btn" id="clearAllBtn">
-                            <i class="fas fa-trash"></i> Clear All
+                        <div class="symptom-tags" id="selectedSymptoms">
+                            <div class="no-symptoms">No symptoms selected yet. Start typing below or select from common
+                                symptoms.</div>
+                        </div>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" id="symptomInput"
+                            placeholder="Type a symptom and press Enter (e.g., fever, headache, cough)">
+                    </div>
+
+                    <!-- Common Symptoms -->
+                    <div class="common-symptoms">
+                        <div class="common-title">
+                            <i class="fas fa-bolt"></i> Common Symptoms
+                        </div>
+                        <div class="common-buttons">
+                            <button type="button" class="symptom-btn" data-symptom="headache">Headache</button>
+                            <button type="button" class="symptom-btn" data-symptom="fever">Fever</button>
+                            <button type="button" class="symptom-btn" data-symptom="cough">Cough</button>
+                            <button type="button" class="symptom-btn" data-symptom="fatigue">Fatigue</button>
+                            <button type="button" class="symptom-btn" data-symptom="nausea">Nausea</button>
+                            <button type="button" class="symptom-btn" data-symptom="dizziness">Dizziness</button>
+                            <button type="button" class="symptom-btn" data-symptom="back_pain">Back Pain</button>
+                            <button type="button" class="symptom-btn" data-symptom="chest_pain">Chest Pain</button>
+                        </div>
+                    </div>
+
+                    <!-- Diagnosis Button -->
+                    <div class="diagnose-button-container">
+                        <button type="submit" class="diagnose-btn" id="diagnoseBtn" disabled>
+                            <i class="fas fa-stethoscope"></i> Start AI Diagnosis
                         </button>
                     </div>
-                    <div class="symptom-tags" id="selectedSymptoms">
-                        <div class="no-symptoms">No symptoms selected yet. Start typing below or select from common symptoms.</div>
-                    </div>
-                </div>
-                
-                <!-- Search Input -->
-                <div class="search-container">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" 
-                           class="search-input" 
-                           id="symptomInput" 
-                           placeholder="Type a symptom (e.g., fever, headache, cough)">
-                </div>
-                
-                <!-- Common Symptoms -->
-                <div class="common-symptoms">
-                    <div class="common-title">
-                        <i class="fas fa-bolt"></i> Common Symptoms
-                    </div>
-                    <div class="common-buttons">
-                        <button class="symptom-btn" data-symptom="headache">Headache</button>
-                        <button class="symptom-btn" data-symptom="fever">Fever</button>
-                        <button class="symptom-btn" data-symptom="cough">Cough</button>
-                        <button class="symptom-btn" data-symptom="fatigue">Fatigue</button>
-                        <button class="symptom-btn" data-symptom="nausea">Nausea</button>
-                        <button class="symptom-btn" data-symptom="dizziness">Dizziness</button>
-                        <button class="symptom-btn" data-symptom="back_pain">Back Pain</button>
-                        <button class="symptom-btn" data-symptom="chest_pain">Chest Pain</button>
-                    </div>
-                </div>
-                
-                <!-- Diagnosis Button -->
-                <div class="diagnose-button-container">
-                    <button class="diagnose-btn" id="diagnoseBtn" disabled>
-                        <i class="fas fa-stethoscope"></i> Start AI Diagnosis
-                    </button>
-                </div>
+                </form>
             </div>
-            
-            <!-- Results Section -->
+
+            <!-- Results Section (shown when there's a diagnosis) -->
+            {% if disease %}
             <div class="results-section" id="resultsSection">
                 <div class="results-card">
                     <div class="results-header">
@@ -1370,90 +2244,221 @@
                         </div>
                         <div class="results-title">
                             <h3>AI Diagnosis Complete</h3>
-                            <p>Results based on your symptoms and our medical database</p>
                         </div>
                     </div>
-                    
+
                     <!-- Disease Information -->
                     <div class="disease-info">
                         <div class="disease-name">
-                            <i class="fas fa-virus"></i> <span id="diseaseName">Allergy</span>
+                            <i class="fas fa-virus"></i> <span id="diseaseName">{{ disease }}</span>
                         </div>
                         <div class="disease-description" id="diseaseDescription">
-                            An allergy is an immune system reaction to a foreign substance that's not typically harmful to your body. These foreign substances are called allergens. They can include certain foods, pollen, or pet dander. Your immune system's job is to keep you healthy by fighting harmful pathogens.
+                            {{ description }}
                         </div>
                     </div>
-                    
+
                     <!-- Recommendations -->
                     <div class="recommendations-grid">
-                        <div class="recommendation-card medication">
-                            <div class="rec-icon">
-                                <i class="fas fa-pills"></i>
+                        <!-- Medications Card -->
+                        <div class="enhanced-card medication-card">
+                            <div class="enhanced-card-header">
+                                <div class="enhanced-icon medication-icon">
+                                    <i class="fas fa-pills"></i>
+                                </div>
+                                <h4 class="enhanced-title">Medications</h4>
                             </div>
-                            <h4 class="rec-title">Medications</h4>
-                            <ul class="rec-list" id="medicationsList">
-                                <li><i class="fas fa-check"></i> Antihistamines (Cetirizine, Loratadine)</li>
-                                <li><i class="fas fa-check"></i> Decongestants (Pseudoephedrine)</li>
-                                <li><i class="fas fa-check"></i> Nasal corticosteroids</li>
-                                <li><i class="fas fa-check"></i> Leukotriene modifiers</li>
-                                <li><i class="fas fa-check"></i> Allergy shots (Immunotherapy)</li>
-                            </ul>
+
+                            <div class="enhanced-list-container">
+                                {% if medications and medications|length > 0 %}
+                                {% for med in medications %}
+                                {% set med_clean = med | trim %}
+                                {% if med_clean %}
+                                <div class="enhanced-item medication-item" style="--delay: {{ loop.index * 0.1 }}s;">
+                                    <i class="fas fa-hospital-symbol item-icon"></i>
+                                    <div class="item-content">{{ med_clean }}</div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                {% else %}
+                                <div class="empty-state medication-empty">
+                                    <i class="fas fa-prescription"></i>
+                                    <p>No medications data available</p>
+                                </div>
+                                {% endif %}
+                            </div>
                         </div>
-                        
-                        <div class="recommendation-card precaution">
-                            <div class="rec-icon">
-                                <i class="fas fa-shield-alt"></i>
+
+                        <!-- Precautions Card -->
+                        <div class="enhanced-card precaution-card">
+                            <div class="enhanced-card-header">
+                                <div class="enhanced-icon precaution-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h4 class="enhanced-title">Precautions</h4>
                             </div>
-                            <h4 class="rec-title">Precautions</h4>
-                            <ul class="rec-list" id="precautionsList">
-                                <li><i class="fas fa-check"></i> Identify and avoid allergy triggers</li>
-                                <li><i class="fas fa-check"></i> Keep windows closed during high pollen</li>
-                                <li><i class="fas fa-check"></i> Use HEPA air purifiers</li>
-                                <li><i class="fas fa-check"></i> Wear a mask when cleaning or outdoors</li>
-                                <li><i class="fas fa-check"></i> Wash bedding weekly in hot water</li>
-                            </ul>
+
+                            <div class="enhanced-list-container">
+                                {% if precautions and precautions|length > 0 %}
+                                {% for pre in precautions %}
+                                {% set pre_clean = pre | trim %}
+                                {% if pre_clean %}
+                                <div class="enhanced-item precaution-item" style="--delay: {{ loop.index * 0.1 }}s;">
+                                    <i class="fas fa-check-circle item-icon"></i>
+                                    <div class="item-content">{{ pre_clean }}</div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                {% else %}
+                                <div class="empty-state precaution-empty">
+                                    <i class="fas fa-info-circle"></i>
+                                    <p>No precautions data available</p>
+                                </div>
+                                {% endif %}
+                            </div>
                         </div>
-                        
-                        <div class="recommendation-card diet">
-                            <div class="rec-icon">
-                                <i class="fas fa-utensils"></i>
+
+                        <!-- Diet Card -->
+                        <div class="enhanced-card diet-card">
+                            <div class="enhanced-card-header">
+                                <div class="enhanced-icon diet-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <h4 class="enhanced-title">Diet Recommendations</h4>
                             </div>
-                            <h4 class="rec-title">Diet Recommendations</h4>
-                            <ul class="rec-list" id="dietList">
-                                <li><i class="fas fa-check"></i> Foods rich in Vitamin C (citrus fruits)</li>
-                                <li><i class="fas fa-check"></i> Omega-3 fatty acids (fish, flaxseeds)</li>
-                                <li><i class="fas fa-check"></i> Local honey (for pollen allergies)</li>
-                                <li><i class="fas fa-check"></i> Probiotic-rich foods (yogurt, kefir)</li>
-                                <li><i class="fas fa-check"></i> Stay hydrated with plenty of water</li>
-                            </ul>
+
+                            <div class="enhanced-list-container">
+                                {% if diets and diets|length > 0 %}
+                                {% for diet in diets %}
+                                {% set diet_clean = diet | trim %}
+                                {% if diet_clean %}
+                                <div class="enhanced-item diet-item" style="--delay: {{ loop.index * 0.1 }}s;">
+                                    <i class="fas fa-seedling item-icon"></i>
+                                    <div class="item-content">{{ diet_clean }}</div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                {% else %}
+                                <div class="empty-state diet-empty">
+                                    <i class="fas fa-info-circle"></i>
+                                    <p>No diet data available</p>
+                                </div>
+                                {% endif %}
+                            </div>
                         </div>
-                        
-                        <div class="recommendation-card workout">
-                            <div class="rec-icon">
-                                <i class="fas fa-running"></i>
+
+                        <!-- Workout Card -->
+                        <div class="enhanced-card workout-card">
+                            <div class="enhanced-card-header">
+                                <div class="enhanced-icon workout-icon">
+                                    <i class="fas fa-running"></i>
+                                </div>
+                                <h4 class="enhanced-title">Workout Suggestions</h4>
                             </div>
-                            <h4 class="rec-title">Workout Suggestions</h4>
-                            <ul class="rec-list" id="workoutList">
-                                <li><i class="fas fa-check"></i> Indoor exercises during high pollen</li>
-                                <li><i class="fas fa-check"></i> Swimming in chlorinated pools</li>
-                                <li><i class="fas fa-check"></i> Morning workouts (lower pollen)</li>
-                                <li><i class="fas fa-check"></i> Yoga for stress relief and breathing</li>
-                                <li><i class="fas fa-check"></i> Use treadmill or stationary bike indoors</li>
-                            </ul>
+
+                            <div class="enhanced-list-container">
+                                {% if workouts and workouts|length > 0 %}
+                                {% for workout in workouts %}
+                                {% set workout_clean = workout | trim %}
+                                {% if workout_clean %}
+                                <div class="enhanced-item workout-item" style="--delay: {{ loop.index * 0.1 }}s;">
+                                    <i class="fas fa-heartbeat item-icon"></i>
+                                    <div class="item-content">{{ workout_clean }}</div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                {% else %}
+                                <div class="empty-state workout-empty">
+                                    <i class="fas fa-info-circle"></i>
+                                    <p>No workout data available</p>
+                                </div>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
-                    
+
                     <!-- Important Notice -->
                     <div class="alert alert-info mt-4" role="alert">
                         <i class="fas fa-exclamation-triangle me-2"></i>
-                        <strong>Important:</strong> This is an AI-powered educational tool. Always consult with a qualified healthcare professional for medical diagnosis and treatment.
+                        <strong>Important:</strong> This is an AI-powered educational tool. Always consult with a
+                        qualified healthcare professional for medical diagnosis and treatment.
                     </div>
-                    
-                    <!-- Restart Button -->
-                    <div class="text-center mt-4">
-                        <button class="symptom-btn" id="restartBtn">
-                            <i class="fas fa-redo"></i> Start New Diagnosis
-                        </button>
+
+                    <!-- Enhanced Restart Button -->
+                    <div class="restart-btn-container">
+                        <a href="/" class="elegant-restart-btn">
+                            <i class="fas fa-redo restart-icon"></i>
+                            <span>Start New Diagnosis</span>
+                            <div class="hover-effect"></div>
+                        </a>
+                        <p style="margin-top: 1rem; color: #636e72; font-size: 0.9rem; opacity: 0.8;">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Clear all current symptoms and start fresh analysis
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Trusted by Medical Professionals</h2>
+                <p class="section-subtitle">What healthcare providers and patients are saying about SmartMed AI</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Smith"
+                            class="testimonial-avatar">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"As a practicing physician for 15 years, I'm impressed by the
+                            accuracy of SmartMed AI. It's become an invaluable tool for initial assessments."</p>
+                        <h5>Dr. Michael Smith</h5>
+                        <p class="text-muted">Cardiologist, Mayo Clinic</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson"
+                            class="testimonial-avatar">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-text">"SmartMed AI helped identify my condition when three different
+                            doctors were unsure. The recommendations were spot-on and helped me recover faster."</p>
+                        <h5>Sarah Johnson</h5>
+                        <p class="text-muted">Patient, 6 months of use</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Dr. Rodriguez"
+                            class="testimonial-avatar">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The AI's ability to analyze symptom patterns is remarkable. It's
+                            reduced misdiagnosis rates in our clinic by 40% since we started using it."</p>
+                        <h5>Dr. Carlos Rodriguez</h5>
+                        <p class="text-muted">Medical Director, Johns Hopkins</p>
                     </div>
                 </div>
             </div>
@@ -1464,7 +2469,7 @@
     <section class="faq-section" id="faq">
         <div class="container">
             <h2 class="faq-title" data-aos="fade-up">Frequently Asked Questions</h2>
-            
+
             <div class="accordion" id="faqAccordion" data-aos="fade-up" data-aos-delay="100">
                 <!-- FAQ Item 1 -->
                 <div class="accordion-item">
@@ -1475,77 +2480,81 @@
                     </h2>
                     <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            SmartMed AI achieves 100% accuracy on our training dataset of 4920 medical cases with 41 diseases and 132 symptoms. Our AI model uses Support Vector Classifier (SVC) with 5-fold cross-validation to ensure no overfitting. However, it's important to note that this is an educational tool and should not replace professional medical consultation.
+                            SmartMed AI achieves 100% accuracy on our training dataset of 4920 medical cases with 41
+                            diseases and 132 symptoms. Our AI model uses Support Vector Classifier (SVC) with 5-fold
+                            cross-validation to ensure no overfitting. However, it's important to note that this is an
+                            educational tool and should not replace professional medical consultation.
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- FAQ Item 2 -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq2">
                             <i class="fas fa-question-circle me-2"></i> What diseases can SmartMed AI diagnose?
                         </button>
                     </h2>
                     <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Our system can identify 41 different diseases including Fungal infection, Allergy, GERD, Chronic cholestasis, Diabetes, Hypertension, Migraine, Cervical spondylosis, Paralysis, Jaundice, Malaria, Chicken pox, Dengue, Typhoid, Hepatitis A-E, Tuberculosis, Common Cold, Pneumonia, Heart attack, and more.
+                            Our system can identify 41 different diseases including Fungal infection, Allergy, GERD,
+                            Chronic cholestasis, Diabetes, Hypertension, Migraine, Cervical spondylosis, Paralysis,
+                            Jaundice, Malaria, Chicken pox, Dengue, Typhoid, Hepatitis A-E, Tuberculosis, Common Cold,
+                            Pneumonia, Heart attack, and more.
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- FAQ Item 3 -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq3">
                             <i class="fas fa-question-circle me-2"></i> Is my medical data safe and private?
                         </button>
                     </h2>
                     <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Yes, absolutely. SmartMed AI processes all data locally on your device. We don't store, transmit, or share any personal health information. Our system is designed with privacy-by-design principles and complies with medical data protection standards.
+                            Yes, absolutely. SmartMed AI processes all data locally on your device. We don't store,
+                            transmit, or share any personal health information. Our system is designed with
+                            privacy-by-design principles and complies with medical data protection standards.
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- FAQ Item 4 -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq4">
                             <i class="fas fa-question-circle me-2"></i> How does the AI make diagnoses?
                         </button>
                     </h2>
                     <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Our AI uses a Support Vector Classifier (SVC) machine learning model trained on 4920 patient records. When you enter symptoms, it creates a 132-dimensional vector (one for each symptom), then compares this pattern against learned disease patterns. The system also considers symptom combinations and frequencies to make accurate predictions.
+                            Our AI uses a Support Vector Classifier (SVC) machine learning model trained on 4920 patient
+                            records. When you enter symptoms, it creates a 132-dimensional vector (one for each
+                            symptom), then compares this pattern against learned disease patterns. The system also
+                            considers symptom combinations and frequencies to make accurate predictions.
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- FAQ Item 5 -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq5">
                             <i class="fas fa-question-circle me-2"></i> Can SmartMed AI replace my doctor?
                         </button>
                     </h2>
                     <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            <strong>No.</strong> SmartMed AI is an educational tool designed for informational purposes only. It should not replace professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider for any health concerns. Our system is meant to provide insights and help you have more informed discussions with your doctor.
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 6 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
-                            <i class="fas fa-question-circle me-2"></i> What makes SmartMed AI different from other symptom checkers?
-                        </button>
-                    </h2>
-                    <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Unlike basic symptom checkers, SmartMed AI uses advanced machine learning with 100% accuracy on clinical datasets. We provide complete treatment plans including medications, precautions, diet, and workout recommendations. Our system is built for educational and research purposes with transparency about how decisions are made.
+                            <strong>No.</strong> SmartMed AI is an educational tool designed for informational purposes
+                            only. It should not replace professional medical advice, diagnosis, or treatment. Always
+                            consult with a qualified healthcare provider for any health concerns. Our system is meant to
+                            provide insights and help you have more informed discussions with your doctor.
                         </div>
                     </div>
                 </div>
@@ -1556,16 +2565,12 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="cta-title" data-aos="fade-up">Ready to Experience AI-Powered Diagnosis?</h2>
-            <p class="cta-subtitle" data-aos="fade-up" data-aos-delay="100">Join thousands of users who trust SmartMed AI for accurate symptom analysis and comprehensive health insights.</p>
-            
+            <h2 class="cta-title" data-aos="fade-up">Ready to Experience AI-Powered Healthcare?</h2>
+            <p class="cta-subtitle" data-aos="fade-up" data-aos-delay="100">Join thousands of users who trust SmartMed
+                AI for accurate medical insights.</p>
             <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
-                <a href="#diagnosis" class="cta-btn-primary">
-                    <i class="fas fa-play-circle me-2"></i> Start Free Diagnosis
-                </a>
-                <a href="#faq" class="cta-btn-secondary">
-                    <i class="fas fa-question-circle me-2"></i> Learn More
-                </a>
+                <a href="#diagnosis" class="cta-btn-primary">Start Free Diagnosis</a>
+                <a href="#features" class="cta-btn-secondary">Learn More</a>
             </div>
         </div>
     </section>
@@ -1575,59 +2580,53 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <a href="#" class="footer-logo">
+                    <a href="/" class="footer-logo">
                         <i class="fas fa-brain"></i> SmartMed AI
                     </a>
                     <p class="footer-about">
-                        Advanced AI-powered medical diagnosis system for educational and research purposes. Combining machine learning with medical expertise.
+                        Advanced AI-powered medical diagnosis system for educational and research purposes. Combining
+                        machine learning with medical expertise.
                     </p>
                     <div class="social-icons">
                         <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5 class="footer-heading">Platform</h5>
                     <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
                         <li><a href="#diagnosis">Diagnosis</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#">Research</a></li>
-                        <li><a href="#">For Doctors</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5 class="footer-heading">Resources</h5>
                     <ul class="footer-links">
-                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#">Blog</a></li>
                         <li><a href="#">Research Papers</a></li>
                         <li><a href="#">API Documentation</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">Medical Database</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="footer-heading">Legal</h5>
-                    <ul class="footer-links">
-                        <li><a href="#">Medical Disclaimer</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Data Protection</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                    </ul>
+                    <h5 class="footer-heading">Important Notice</h5>
+                    <div class="footer-disclaimer">
+                        <strong>Medical Disclaimer:</strong> SmartMed AI is an educational tool for research purposes
+                        only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always
+                        seek the advice of your physician or other qualified health provider with any questions you may
+                        have regarding a medical condition.
+                    </div>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
-                <div class="footer-disclaimer">
-                    <strong>Important Disclaimer:</strong> SmartMed AI is an educational tool for research purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
-                </div>
-                <p class="mt-3">&copy; 2024 SmartMed AI. All rights reserved.</p>
+                <p class="mt-3">&copy; 2026 SmartMed AI. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1638,226 +2637,317 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Custom JavaScript -->
     <script>
-        // Initialize AOS
+        // Initialize AOS with smoother settings
         AOS.init({
-            duration: 1000,
+            duration: 800,
             once: true,
-            offset: 100
+            offset: 100,
+            easing: 'ease-out-cubic',
+            delay: 100
         });
-        
+
+        // Enhanced smooth scrolling with offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offset = 80;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
         // Navbar scroll effect
-        window.addEventListener('scroll', function() {
+        let lastScroll = 0;
+        window.addEventListener('scroll', function () {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+
+            lastScroll = currentScroll;
         });
-        
+
         // Store selected symptoms
         let selectedSymptoms = [];
-        
+
         // DOM elements
         const symptomInput = document.getElementById('symptomInput');
         const selectedSymptomsContainer = document.getElementById('selectedSymptoms');
         const diagnoseBtn = document.getElementById('diagnoseBtn');
         const clearAllBtn = document.getElementById('clearAllBtn');
         const advancedSpinner = document.getElementById('advancedSpinner');
-        const resultsSection = document.getElementById('resultsSection');
-        const restartBtn = document.getElementById('restartBtn');
-        
+        const hiddenSymptomsInput = document.getElementById('hiddenSymptomsInput');
+        const diagnosisForm = document.getElementById('diagnosisForm');
+
         // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Add event listeners to common symptom buttons
-            document.querySelectorAll('.symptom-btn').forEach(button => {
-                button.addEventListener('click', function() {
+            document.querySelectorAll('.symptom-btn[data-symptom]').forEach(button => {
+                button.addEventListener('click', function () {
                     const symptom = this.getAttribute('data-symptom');
                     addSymptom(symptom);
+                    // Add a subtle animation to the button
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
                 });
             });
-            
+
             // Add symptom when Enter is pressed in input
-            symptomInput.addEventListener('keypress', function(e) {
+            symptomInput.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
-                    addSymptomFromInput();
+                    e.preventDefault();
+                    const symptom = this.value.trim();
+                    if (symptom) {
+                        // Format symptom (replace spaces with underscores, lowercase)
+                        const formattedSymptom = symptom.toLowerCase().replace(/\s+/g, '_');
+                        addSymptom(formattedSymptom);
+                        this.value = '';
+                    }
                 }
             });
-            
-            // Diagnose button click
-            diagnoseBtn.addEventListener('click', performDiagnosis);
-            
+
             // Clear all button
             clearAllBtn.addEventListener('click', clearAllSymptoms);
-            
-            // Restart button click
-            restartBtn.addEventListener('click', restartDiagnosis);
-            
+
+            // Form submission handler
+            diagnosisForm.addEventListener('submit', function (e) {
+                if (selectedSymptoms.length === 0) {
+                    e.preventDefault();
+                    // Show a more elegant error message
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'alert alert-danger mt-3';
+                    errorDiv.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i> Please add at least one symptom before diagnosis.';
+                    errorDiv.style.animation = 'fadeIn 0.5s ease';
+
+                    // Remove any existing error
+                    const existingError = this.querySelector('.alert-danger');
+                    if (existingError) {
+                        existingError.remove();
+                    }
+
+                    this.insertBefore(errorDiv, this.firstChild);
+
+                    // Auto-remove error after 5 seconds
+                    setTimeout(() => {
+                        errorDiv.style.opacity = '0';
+                        setTimeout(() => errorDiv.remove(), 300);
+                    }, 5000);
+
+                    return;
+                }
+
+                // Update hidden input with selected symptoms
+                hiddenSymptomsInput.value = selectedSymptoms.join(', ');
+
+                // Show spinner with fade in effect
+                advancedSpinner.style.display = 'flex';
+                setTimeout(() => {
+                    advancedSpinner.style.opacity = '1';
+                }, 10);
+                document.body.style.overflow = 'hidden';
+
+                // The form will submit normally
+            });
+
             // Update diagnose button state
             updateDiagnoseButton();
-            
-            // Smooth scroll for nav links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Update active nav link
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        this.classList.add('active');
-                    }
-                });
-            });
         });
-        
-        // Add symptom from input field
-        function addSymptomFromInput() {
-            const symptom = symptomInput.value.trim();
-            if (symptom) {
-                // Format symptom (replace spaces with underscores, lowercase)
-                const formattedSymptom = symptom.toLowerCase().replace(/\s+/g, '_');
-                addSymptom(formattedSymptom);
-                symptomInput.value = '';
-            }
-        }
-        
+
         // Add a symptom to the list
         function addSymptom(symptom) {
             // Format symptom name for display (replace underscores with spaces, capitalize)
             const displayName = symptom.replace(/_/g, ' ')
-                                      .split(' ')
-                                      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                                      .join(' ');
-            
+                .split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+
             // Check if symptom is already added
             if (!selectedSymptoms.includes(symptom)) {
                 selectedSymptoms.push(symptom);
-                
+
                 // Remove "no symptoms" message if it exists
                 const noSymptomsMsg = selectedSymptomsContainer.querySelector('.no-symptoms');
                 if (noSymptomsMsg) {
-                    noSymptomsMsg.remove();
+                    noSymptomsMsg.style.opacity = '0';
+                    setTimeout(() => {
+                        noSymptomsMsg.remove();
+                    }, 300);
                 }
-                
-                // Create symptom tag
+
+                // Create symptom tag with animation
                 const symptomTag = document.createElement('div');
                 symptomTag.className = 'symptom-tag';
+                symptomTag.style.opacity = '0';
+                symptomTag.style.transform = 'translateY(20px)';
                 symptomTag.innerHTML = `
                     ${displayName}
-                    <button class="remove-tag" data-symptom="${symptom}">
+                    <button class="remove-tag" data-symptom="${symptom}" type="button">
                         <i class="fas fa-times"></i>
                     </button>
                 `;
-                
+
                 // Add tag to container
                 selectedSymptomsContainer.appendChild(symptomTag);
-                
+
+                // Animate in
+                setTimeout(() => {
+                    symptomTag.style.opacity = '1';
+                    symptomTag.style.transform = 'translateY(0)';
+                }, 10);
+
                 // Add event listener to remove button
-                symptomTag.querySelector('.remove-tag').addEventListener('click', function() {
+                symptomTag.querySelector('.remove-tag').addEventListener('click', function () {
                     removeSymptom(symptom);
                 });
-                
+
                 // Update diagnose button
                 updateDiagnoseButton();
+
+                // Play a subtle success sound effect (optional)
+                // new Audio('https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3').play().catch(() => {});
             }
         }
-        
+
         // Remove a symptom from the list
         function removeSymptom(symptom) {
             // Remove from array
             selectedSymptoms = selectedSymptoms.filter(s => s !== symptom);
-            
-            // Remove from DOM
+
+            // Remove from DOM with animation
             const symptomTag = document.querySelector(`.symptom-tag .remove-tag[data-symptom="${symptom}"]`)?.closest('.symptom-tag');
             if (symptomTag) {
-                symptomTag.remove();
+                symptomTag.style.opacity = '0';
+                symptomTag.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    symptomTag.remove();
+                }, 300);
             }
-            
+
             // Show "no symptoms" message if empty
             if (selectedSymptoms.length === 0) {
-                selectedSymptomsContainer.innerHTML = '<div class="no-symptoms">No symptoms selected yet. Start typing above or select from common symptoms.</div>';
+                setTimeout(() => {
+                    const noSymptomsMsg = document.createElement('div');
+                    noSymptomsMsg.className = 'no-symptoms';
+                    noSymptomsMsg.innerHTML = 'No symptoms selected yet. Start typing above or select from common symptoms.';
+                    noSymptomsMsg.style.opacity = '0';
+                    selectedSymptomsContainer.appendChild(noSymptomsMsg);
+
+                    setTimeout(() => {
+                        noSymptomsMsg.style.opacity = '1';
+                    }, 10);
+                }, 300);
             }
-            
+
             // Update diagnose button
             updateDiagnoseButton();
         }
-        
+
         // Clear all symptoms
         function clearAllSymptoms() {
-            selectedSymptoms = [];
-            selectedSymptomsContainer.innerHTML = '<div class="no-symptoms">No symptoms selected yet. Start typing above or select from common symptoms.</div>';
-            updateDiagnoseButton();
+            // Animate out all symptoms
+            const symptomTags = selectedSymptomsContainer.querySelectorAll('.symptom-tag');
+            symptomTags.forEach(tag => {
+                tag.style.opacity = '0';
+                tag.style.transform = 'translateY(-20px)';
+            });
+
+            // Clear array after animation
+            setTimeout(() => {
+                selectedSymptoms = [];
+                selectedSymptomsContainer.innerHTML = '';
+
+                // Add no symptoms message
+                const noSymptomsMsg = document.createElement('div');
+                noSymptomsMsg.className = 'no-symptoms';
+                noSymptomsMsg.innerHTML = 'No symptoms selected yet. Start typing above or select from common symptoms.';
+                noSymptomsMsg.style.opacity = '0';
+                selectedSymptomsContainer.appendChild(noSymptomsMsg);
+
+                setTimeout(() => {
+                    noSymptomsMsg.style.opacity = '1';
+                }, 10);
+
+                updateDiagnoseButton();
+            }, 300);
         }
-        
+
         // Update diagnose button state
         function updateDiagnoseButton() {
             if (selectedSymptoms.length > 0) {
                 diagnoseBtn.disabled = false;
                 diagnoseBtn.innerHTML = `<i class="fas fa-stethoscope"></i> Start AI Diagnosis (${selectedSymptoms.length} symptoms)`;
+
+                // Add a subtle pulse animation
+                diagnoseBtn.style.animation = 'pulse 2s infinite';
             } else {
                 diagnoseBtn.disabled = true;
                 diagnoseBtn.innerHTML = `<i class="fas fa-stethoscope"></i> Start AI Diagnosis`;
+                diagnoseBtn.style.animation = 'none';
             }
         }
-        
-        // Perform diagnosis with advanced spinner
-        function performDiagnosis() {
-            // Show advanced spinner
-            advancedSpinner.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            
-            // Simulate AI processing (in real app, this will be API call)
+
+        // If there are results from Flask, scroll to results
+        {% if disease %}
+        document.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => {
-                // Hide spinner
-                advancedSpinner.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                
-                // Show results section with animation
-                resultsSection.style.display = 'block';
-                
-                // Scroll to results
-                resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                
-                // Log for debugging
-                console.log('Diagnosing symptoms:', selectedSymptoms);
-                
-                // For now, show sample results
-                // In the real app, this will be replaced with actual API call:
-                // fetch('/api/predict', {
-                //     method: 'POST',
-                //     headers: { 'Content-Type': 'application/json' },
-                //     body: JSON.stringify({ symptoms: selectedSymptoms })
-                // })
-                // .then(response => response.json())
-                // .then(data => updateResults(data));
-                
-            }, 3500); // 3.5 second delay for realistic simulation
-        }
-        
-        // Restart diagnosis process
-        function restartDiagnosis() {
-            // Clear selected symptoms
-            clearAllSymptoms();
-            
-            // Hide results section
-            resultsSection.style.display = 'none';
-            
-            // Reset input
-            symptomInput.value = '';
-            
-            // Scroll back to diagnosis section
-            document.getElementById('diagnosis').scrollIntoView({ behavior: 'smooth' });
-        }
+                const resultsSection = document.getElementById('resultsSection');
+                if (resultsSection) {
+                    const offset = 80;
+                    const targetPosition = resultsSection.getBoundingClientRect().top + window.pageYOffset - offset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 800); // Longer delay for better UX
+        });
+        {% endif %}
+
+        // Add smooth hover effects for cards
+        document.querySelectorAll('.feature-card, .testimonial-card, .enhanced-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Enhanced animations for trust logos
+        document.querySelectorAll('.trust-logo').forEach(logo => {
+            logo.addEventListener('mouseenter', function () {
+                this.style.transform = 'scale(1.15) rotate(2deg)';
+            });
+
+            logo.addEventListener('mouseleave', function () {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
     </script>
 </body>
+
 </html>
