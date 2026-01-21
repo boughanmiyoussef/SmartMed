@@ -1017,21 +1017,24 @@
     white-space: nowrap;
 }
         .diagnose-btn::before {
-            content: '';
-                display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 380px;
-    position: fixed;
-    overflow: hidden;
-    white-space: nowrap;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
+    background: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0.7;
+    
+    /* CRITICAL: Same positioning as active button */
+    display: flex; /* Same as active */
+    align-items: center; /* Same as active */
+    justify-content: center; /* Same as active */
+    width: 380px; /* Same width */
+    padding: 1.3rem 3.5rem; /* Same padding */
+    font-size: 1.2rem; /* Same font size */
+    font-weight: 600; /* Same font weight */
+    border-radius: 16px; /* Same border radius */
+    border: none; /* Same border */
+
+}
 
         .diagnose-btn:hover::before {
             left: 100%;
