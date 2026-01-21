@@ -1008,9 +1008,11 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
-    display: block; /* 👈 CHANGED FROM inline-flex */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 380px;
-    margin: 2rem auto; /* 👈 ADD THIS TO CENTER */
+    position: fixed;
     overflow: hidden;
     white-space: nowrap;
 }
