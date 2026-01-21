@@ -19,8 +19,6 @@
 - [Live Demo](#-live-demo)
 - [Quick Start](#-quick-start)
 - [Project Structure](#-project-structure)
-- [Technology Stack](#-technology-stack)
-- [Dataset Details](#-dataset-details)
 - [Model Performance](#-model-performance)
 - [API Documentation](#-api-documentation)
 - [Usage Examples](#-usage-examples)
@@ -177,52 +175,6 @@ SmartMed/
     └── index.html              # Main diagnosis page
 ```
 
-## 🛠️ Technology Stack
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
-  <div style="border: 1px solid #3498db; border-radius: 8px; padding: 15px; text-align: center; background: #e3f2fd;">
-    <strong>Python 3.8+</strong><br>
-    <small>Core programming language</small>
-  </div>
-  <div style="border: 1px solid #e74c3c; border-radius: 8px; padding: 15px; text-align: center; background: #ffebee;">
-    <strong>Flask 2.3.3</strong><br>
-    <small>Web framework</small>
-  </div>
-  <div style="border: 1px solid #f39c12; border-radius: 8px; padding: 15px; text-align: center; background: #fff3e0;">
-    <strong>Scikit-learn 1.3.2</strong><br>
-    <small>Machine learning</small>
-  </div>
-  <div style="border: 1px solid #2ecc71; border-radius: 8px; padding: 15px; text-align: center; background: #e8f5e9;">
-    <strong>Pandas 2.1.4</strong><br>
-    <small>Data manipulation</small>
-  </div>
-  <div style="border: 1px solid #9b59b6; border-radius: 8px; padding: 15px; text-align: center; background: #f3e5f5;">
-    <strong>NumPy 1.24.4</strong><br>
-    <small>Numerical computing</small>
-  </div>
-  <div style="border: 1px solid #1abc9c; border-radius: 8px; padding: 15px; text-align: center; background: #e0f2f1;">
-    <strong>Bootstrap 5.3</strong><br>
-    <small>Frontend framework</small>
-  </div>
-  <div style="border: 1px solid #34495e; border-radius: 8px; padding: 15px; text-align: center; background: #eceff1;">
-    <strong>Joblib 1.3.2</strong><br>
-    <small>Model serialization</small>
-  </div>
-  <div style="border: 1px solid #e67e22; border-radius: 8px; padding: 15px; text-align: center; background: #fff3e0;">
-    <strong>Jupyter</strong><br>
-    <small>Development environment</small>
-  </div>
-</div>
-
-### Framework Breakdown
-- **Backend**: Flask for web server and API endpoints
-- **Machine Learning**: Scikit-learn for SVC model implementation
-- **Data Processing**: Pandas and NumPy for data manipulation
-- **Frontend**: Bootstrap for responsive UI components
-- **Model Management**: Joblib for model serialization and loading
-
-## 📊 Dataset Details
-
 ### Dataset Composition
 | Metric | Value | Description |
 |--------|-------|-------------|
@@ -233,48 +185,6 @@ SmartMed/
 | **Class Distribution** | Uniform | 120 cases per disease |
 | **Missing Values** | 0% | Complete dataset |
 
-### Dataset Files
-<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-  <thead>
-    <tr style="background: #f8f9fa;">
-      <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">File Name</th>
-      <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Description</th>
-      <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Records</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="border: 1px solid #ddd; padding: 10px;"><code>Training.csv</code></td>
-      <td style="border: 1px solid #ddd; padding: 10px;">Synthetic patient records with symptoms and diseases</td>
-      <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">4,920</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid #ddd; padding: 10px;"><code>description.csv</code></td>
-      <td style="border: 1px solid #ddd; padding: 10px;">Detailed descriptions of each disease</td>
-      <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">41</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid #ddd; padding: 10px;"><code>precautions_df.csv</code></td>
-      <td style="border: 1px solid #ddd; padding: 10px;">Medical precautions for each disease</td>
-      <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">41</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid #ddd; padding: 10px;"><code>medications.csv</code></td>
-      <td style="border: 1px solid #ddd; padding: 10px;">Recommended medications for each disease</td>
-      <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">41</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid #ddd; padding: 10px;"><code>diets.csv</code></td>
-      <td style="border: 1px solid #ddd; padding: 10px;">Diet recommendations for each disease</td>
-      <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">41</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid #ddd; padding: 10px;"><code>workout_df.csv</code></td>
-      <td style="border: 1px solid #ddd; padding: 10px;">Exercise plans for each disease</td>
-      <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">41</td>
-    </tr>
-  </tbody>
-</table>
 
 ### Data Characteristics
 - **Synthetic Data**: Generated for educational purposes
