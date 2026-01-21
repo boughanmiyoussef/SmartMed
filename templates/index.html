@@ -991,17 +991,19 @@
         }
 
         /* Diagnosis Button */
-        .diagnose-button-container {
-            text-align: center;
-            padding: 2rem 0;
-            position: center;
-        }
+.diagnose-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem 0;
+    width: 100%;
+}
 
 .diagnose-btn {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     color: white;
     border: none;
-    padding: 1.3rem 0; 
+    padding: 1.3rem 2.5rem;
     font-size: 1.2rem;
     font-weight: 600;
     border-radius: 16px;
@@ -1011,10 +1013,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 380px;
-    /* position: fixed; */
-    overflow: hidden;
+    width: 380px; /* FIXED width, not auto */
     white-space: nowrap;
+    text-align: center;
+    overflow: hidden; /* Hide overflow if text is too long */
 }
         /* .diagnose-btn::before {
             content: '';
