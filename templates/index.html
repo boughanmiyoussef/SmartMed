@@ -1001,25 +1001,21 @@
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     color: white;
     border: none;
-    padding: 1.3rem 2rem;   /* horizontal padding instead of fixed width */
+    padding: 1.3rem 0; 
     font-size: 1.2rem;
     font-weight: 600;
     border-radius: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
-
-    display: inline-flex;           /* keep button inline-flex */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-
-    min-width: 280px;               /* optional minimum width */
-    max-width: 90%;                 /* optional responsiveness */
+    width: 450px;
+    /* position: fixed; */
     overflow: hidden;
     white-space: nowrap;
 }
-
         /* .diagnose-btn::before {
             content: '';
             position: absolute;
