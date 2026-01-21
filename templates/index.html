@@ -991,30 +991,33 @@
         }
 
         /* Diagnosis Button */
- .diagnose-button-container {
-    text-align: center; /* fallback */
-    padding: 2rem 0;
-    /* Remove invalid "position: center" */
-}
+        .diagnose-button-container {
+            text-align: center;
+            padding: 2rem 0;
+            position: center;
+        }
 
 .diagnose-btn {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     color: white;
     border: none;
-    padding: 1.3rem 0;
+    padding: 1.3rem 0; 
     font-size: 1.2rem;
     font-weight: 600;
     border-radius: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
-    /* CHANGE THESE LINES 👇 */
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 450px;
-    margin: 0 auto; /* ← This ensures perfect centering */
-    text-align: center;
-    white-space: nowrap;
+    /* position: fixed; */
     overflow: hidden;
+    white-space: nowrap;
+    min-width: 450px; /* ← ensures minimum width */
+    padding: 1.3rem 2rem; /* ← add horizontal padding for breathing room */
+    text-align: center;
 }
         /* .diagnose-btn::before {
             content: '';
