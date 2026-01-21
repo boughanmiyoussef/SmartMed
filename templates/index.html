@@ -993,7 +993,7 @@
 .diagnose-button-container {
     text-align: center;
     padding: 2rem 0;
-    /* position: relative; */
+    position: relative;
     width: 100%; /* Ensure container takes full width */
 }
 
@@ -1010,7 +1010,8 @@
     box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
     display: block;
     margin: 0 auto;
-    width: 380px; /* Fixed width instead of min/max */
+    min-width: 320px;
+    max-width: 400px;
     position: relative;
     overflow: hidden;
     white-space: nowrap;
