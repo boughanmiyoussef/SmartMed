@@ -997,24 +997,39 @@
             position: relative;
         }
 
-        .diagnose-btn {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            color: white;
-            border: none;
-            padding: 1.3rem 3.5rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 250px;
-            position: relative;
-            overflow: hidden;
-        }
+.diagnose-btn {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    border: none;
+    padding: 1.3rem 3.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 320px; /* Increase minimum width to accommodate longer text */
+    max-width: 400px; /* Add maximum width to prevent it from getting too wide */
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap; /* Prevent text from wrapping to multiple lines */
+}
+
+/* Pulse animation for active button */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
+    }
+    50% {
+        box-shadow: 0 10px 40px rgba(0, 82, 204, 0.6);
+    }
+    100% {
+        box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
+    }
+}
 
         .diagnose-btn::before {
             content: '';
