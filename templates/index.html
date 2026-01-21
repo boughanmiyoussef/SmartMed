@@ -37,6 +37,7 @@
             --white: #ffffff;
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             --shadow-hover: 0 15px 50px rgba(0, 0, 0, 0.12);
+            --danger-red: #ff4757;
         }
 
         * {
@@ -66,6 +67,24 @@
             font-family: 'DM Sans', sans-serif;
             font-weight: 700;
             line-height: 1.2;
+        }
+
+        /* Accessibility & Focus */
+        :focus-visible {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
         /* Custom Scrollbar */
@@ -245,27 +264,6 @@
             font-size: 0.9rem;
             color: #8C1515;
             margin-top: 2px;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .trust-logos {
-                gap: 1rem;
-            }
-
-            .trust-logo {
-                padding: 1rem;
-                min-width: 120px;
-                min-height: 100px;
-            }
-
-            .mayo-text {
-                font-size: 1.4rem;
-            }
-
-            .stanford-text {
-                font-size: 1.2rem;
-            }
         }
 
         /* Navbar */
@@ -513,51 +511,12 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0);
             }
-
             50% {
                 transform: translateY(-20px);
             }
-        }
-
-        /* Trust Indicators Section */
-        .trust-section {
-            padding: 60px 0;
-            background-color: var(--light-bg);
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .trust-section h5 {
-            text-align: center;
-            color: var(--light-text);
-            margin-bottom: 2rem;
-            font-weight: 500;
-        }
-
-        .trust-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-        }
-
-        .trust-logo {
-            height: 40px;
-            opacity: 0.6;
-            filter: grayscale(100%);
-            transition: all 0.3s ease;
-        }
-
-        .trust-logo:hover {
-            opacity: 1;
-            filter: grayscale(0%);
-            transform: scale(1.1);
         }
 
         /* Features/Technology Section */
@@ -812,6 +771,7 @@
             padding: 2rem;
             margin-bottom: 2rem;
             min-height: 180px;
+            contain: layout style paint; /* Performance optimization */
         }
 
         .tags-header {
@@ -833,24 +793,7 @@
             color: var(--primary-blue);
         }
 
-        .clear-btn {
-            background: none;
-            border: none;
-            color: var(--accent-red);
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .clear-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .clear-btn i {
-            margin-right: 5px;
-        }
+        /* Clear button removed from here */
 
         .symptom-tags {
             display: flex;
@@ -876,7 +819,6 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -990,36 +932,37 @@
             transform: translateY(-2px);
         }
 
-        /* Diagnosis Button */
+        /* DIAGNOSIS BUTTON - FIXED */
         .diagnose-button-container {
             text-align: center;
-            padding: 2rem 0;
-            position: center;
+            padding: 1.5rem 0 1rem;
+            position: relative;
         }
 
-.diagnose-btn {
-    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-    color: white;
-    border: none;
-    padding: 1.3rem 0; 
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 450px;
-    /* position: fixed; */
-    overflow: hidden;
-    white-space: nowrap;
-    min-width: 450px; /* ← ensures minimum width */
-    padding: 1.3rem 2rem; /* ← add horizontal padding for breathing room */
-    text-align: center;
-}
-        /* .diagnose-btn::before {
+        .diagnose-btn {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border: none;
+            padding: 1.3rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 300px;
+            max-width: 400px;
+            width: auto;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-bottom: 1rem;
+        }
+
+        .diagnose-btn::before {
             content: '';
             position: absolute;
             top: 0;
@@ -1032,7 +975,7 @@
 
         .diagnose-btn:hover::before {
             left: 100%;
-        } */
+        }
 
         .diagnose-btn:hover {
             transform: translateY(-3px);
@@ -1044,6 +987,7 @@
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
+            opacity: 0.7;
         }
 
         .diagnose-btn:disabled::before {
@@ -1053,6 +997,57 @@
         .diagnose-btn i {
             margin-right: 12px;
             font-size: 1.3rem;
+        }
+
+        /* CLEAR ALL BUTTON - NEW STYLE */
+        .clear-all-container {
+            display: none;
+            justify-content: center;
+            padding: 0.5rem 0 1.5rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .clear-all-btn {
+            background: linear-gradient(135deg, var(--danger-red), #ff3838);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 71, 87, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 200px;
+            max-width: 300px;
+            width: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clear-all-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .clear-all-btn:hover::before {
+            left: 100%;
+        }
+
+        .clear-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.3);
+            background: linear-gradient(135deg, #ff3838, #ff1e1e);
         }
 
         /* Advanced Spinner */
@@ -1132,20 +1127,16 @@
             0% {
                 transform: rotate(0deg);
             }
-
             100% {
                 transform: rotate(360deg);
             }
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translate(-50%, -50%) scale(1);
                 opacity: 1;
             }
-
             50% {
                 transform: translate(-50%, -50%) scale(1.2);
                 opacity: 0.7;
@@ -1186,11 +1177,9 @@
             0% {
                 width: 0%;
             }
-
             50% {
                 width: 70%;
             }
-
             100% {
                 width: 100%;
             }
@@ -1207,7 +1196,6 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1753,93 +1741,11 @@
         }
 
         @keyframes subtle-pulse {
-
-            0%,
-            100% {
+            0%, 100% {
                 box-shadow: 0 8px 20px rgba(0, 82, 204, 0.1);
             }
-
             50% {
                 box-shadow: 0 8px 20px rgba(0, 82, 204, 0.2);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-title {
-                font-size: 2.8rem;
-            }
-
-            .section-title {
-                font-size: 2.4rem;
-            }
-
-            .doctor-image {
-                transform: none;
-            }
-
-            .floating-elements {
-                display: none;
-            }
-
-            .process-timeline::before {
-                left: 30px;
-            }
-
-            .step-number {
-                left: 30px;
-            }
-
-            .step-content {
-                width: calc(100% - 90px);
-                margin-left: 90px !important;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.4rem;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .diagnosis-card,
-            .results-card {
-                padding: 2rem;
-            }
-
-            .recommendations-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-title {
-                font-size: 2.4rem;
-            }
-
-            .enhanced-card {
-                padding: 1.5rem;
-            }
-
-            .enhanced-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-
-            .trust-logos {
-                gap: 2rem;
-            }
-
-            .trust-logo {
-                height: 30px;
-            }
-
-            .feature-card,
-            .testimonial-card {
-                padding: 1.5rem;
             }
         }
 
@@ -1872,6 +1778,150 @@
             border-radius: 12px;
             margin-bottom: 2rem;
             animation: fadeIn 0.5s ease;
+        }
+
+        /* Emergency Warning */
+        .medical-warning {
+            background: linear-gradient(135deg, #ff6b6b, #ff3838);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: pulse-warning 2s infinite;
+        }
+
+        @keyframes pulse-warning {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            .section-title {
+                font-size: 2.4rem;
+            }
+            .doctor-image {
+                transform: none;
+            }
+            .floating-elements {
+                display: none;
+            }
+            .process-timeline::before {
+                left: 30px;
+            }
+            .step-number {
+                left: 30px;
+            }
+            .step-content {
+                width: calc(100% - 90px);
+                margin-left: 90px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .diagnosis-card,
+            .results-card {
+                padding: 2rem;
+            }
+            .recommendations-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-title {
+                font-size: 2.4rem;
+            }
+            .enhanced-card {
+                padding: 1.5rem;
+            }
+            .enhanced-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            .trust-logos {
+                gap: 1rem;
+            }
+            .trust-logo {
+                padding: 1rem;
+                min-width: 120px;
+                min-height: 100px;
+            }
+            .mayo-text {
+                font-size: 1.4rem;
+            }
+            .stanford-text {
+                font-size: 1.2rem;
+            }
+            .feature-card,
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+            .diagnose-btn,
+            .clear-all-btn {
+                width: 100%;
+                max-width: 350px;
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .diagnose-btn,
+            .clear-all-btn {
+                font-size: 1rem;
+                padding: 1rem 1.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .navbar,
+            .footer,
+            .cta-section,
+            .diagnose-btn,
+            .search-container,
+            .clear-all-btn,
+            .restart-btn-container,
+            .social-icons {
+                display: none !important;
+            }
+            .results-card {
+                box-shadow: none;
+                border: 1px solid #000;
+                break-inside: avoid;
+            }
+            body {
+                font-size: 12pt;
+                line-height: 1.5;
+            }
+            .hero-section,
+            .features-section,
+            .process-section,
+            .testimonials-section,
+            .faq-section {
+                padding: 2rem 0 !important;
+            }
         }
     </style>
 </head>
@@ -2000,7 +2050,6 @@
     </section>
 
     <!-- Trust Indicators Section -->
-    <!-- Trust Indicators Section -->
     <section class="trust-section">
         <div class="container">
             <h5 data-aos="fade-up">Trusted by Leading Medical Organizations</h5>
@@ -2053,7 +2102,7 @@
     <section class="features-section" id="features">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title"> AI Technology</h2>
+                <h2 class="section-title">AI Technology</h2>
                 <p class="section-subtitle">Powered by cutting-edge machine learning algorithms and medical knowledge
                 </p>
             </div>
@@ -2172,6 +2221,15 @@
             </div>
             {% endif %}
 
+            <!-- Emergency Warning -->
+            <div class="medical-warning" data-aos="fade-up" role="alert" aria-live="assertive">
+                <i class="fas fa-exclamation-triangle fa-2x"></i>
+                <div>
+                    <strong>Emergency Warning:</strong> If you're experiencing chest pain, difficulty breathing,
+                    severe bleeding, or sudden weakness, call emergency services immediately. Do not wait for AI diagnosis.
+                </div>
+            </div>
+
             <div class="diagnosis-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="diagnosis-header">
                     <div class="diagnosis-icon">
@@ -2194,13 +2252,10 @@
                             <div class="tags-title">
                                 <i class="fas fa-list-check"></i> Selected Symptoms
                             </div>
-                            <button type="button" class="clear-btn" id="clearAllBtn">
-                                <i class="fas fa-trash"></i> Clear All
-                            </button>
+                            <!-- Old clear button removed -->
                         </div>
                         <div class="symptom-tags" id="selectedSymptoms">
-                            <div class="no-symptoms">No symptoms selected yet. Start typing below or select from common
-                                symptoms.</div>
+                            <div class="no-symptoms">No symptoms selected yet. Start typing below or select from common symptoms.</div>
                         </div>
                     </div>
 
@@ -2208,7 +2263,8 @@
                     <div class="search-container">
                         <i class="fas fa-search search-icon"></i>
                         <input type="text" class="search-input" id="symptomInput"
-                            placeholder="Type a symptom and press Enter (e.g., fever, headache, cough)">
+                            placeholder="Type a symptom and press Enter (e.g., fever, headache, cough)"
+                            aria-label="Enter symptom">
                     </div>
 
                     <!-- Common Symptoms -->
@@ -2217,21 +2273,28 @@
                             <i class="fas fa-bolt"></i> Common Symptoms
                         </div>
                         <div class="common-buttons">
-                            <button type="button" class="symptom-btn" data-symptom="itching">Itching</button>
-                            <button type="button" class="symptom-btn" data-symptom="stomach_pain">Stomach Pain</button>
-                            <button type="button" class="symptom-btn" data-symptom="cough">Cough</button>
-                            <button type="button" class="symptom-btn" data-symptom="vomiting">Vomiting</button>
-                            <button type="button" class="symptom-btn" data-symptom="nausea">Nausea</button>
-                            <button type="button" class="symptom-btn" data-symptom="yellowish_skin">Yellowish Skin</button>
-                            <button type="button" class="symptom-btn" data-symptom="loss_of_appetite">Loss Of Appetite</button>
-                            <button type="button" class="symptom-btn" data-symptom="fatigue">fatigue</button>
+                            <button type="button" class="symptom-btn" data-symptom="itching" aria-label="Add symptom: Itching">Itching</button>
+                            <button type="button" class="symptom-btn" data-symptom="stomach_pain" aria-label="Add symptom: Stomach Pain">Stomach Pain</button>
+                            <button type="button" class="symptom-btn" data-symptom="cough" aria-label="Add symptom: Cough">Cough</button>
+                            <button type="button" class="symptom-btn" data-symptom="vomiting" aria-label="Add symptom: Vomiting">Vomiting</button>
+                            <button type="button" class="symptom-btn" data-symptom="nausea" aria-label="Add symptom: Nausea">Nausea</button>
+                            <button type="button" class="symptom-btn" data-symptom="yellowish_skin" aria-label="Add symptom: Yellowish Skin">Yellowish Skin</button>
+                            <button type="button" class="symptom-btn" data-symptom="loss_of_appetite" aria-label="Add symptom: Loss Of Appetite">Loss Of Appetite</button>
+                            <button type="button" class="symptom-btn" data-symptom="fatigue" aria-label="Add symptom: Fatigue">Fatigue</button>
                         </div>
                     </div>
 
                     <!-- Diagnosis Button -->
                     <div class="diagnose-button-container">
                         <button type="submit" class="diagnose-btn" id="diagnoseBtn" disabled>
-                            <i class="fas fa-stethoscope"></i> Start AI Diagnosis
+                            <i class="fas fa-stethoscope"></i> <span class="btn-text">Start AI Diagnosis</span>
+                        </button>
+                    </div>
+
+                    <!-- NEW: Clear All Button (only shows when symptoms exist) -->
+                    <div class="clear-all-container" id="clearAllContainer">
+                        <button type="button" class="clear-all-btn" id="clearAllBtn" disabled>
+                            <i class="fas fa-trash-alt"></i> Clear All Symptoms
                         </button>
                     </div>
                 </form>
@@ -2698,12 +2761,17 @@
         const selectedSymptomsContainer = document.getElementById('selectedSymptoms');
         const diagnoseBtn = document.getElementById('diagnoseBtn');
         const clearAllBtn = document.getElementById('clearAllBtn');
+        const clearAllContainer = document.getElementById('clearAllContainer');
         const advancedSpinner = document.getElementById('advancedSpinner');
         const hiddenSymptomsInput = document.getElementById('hiddenSymptomsInput');
         const diagnosisForm = document.getElementById('diagnosisForm');
+        const btnTextSpan = diagnoseBtn.querySelector('.btn-text');
 
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function () {
+            // Load symptoms from localStorage if available
+            loadSymptomsFromStorage();
+
             // Add event listeners to common symptom buttons
             document.querySelectorAll('.symptom-btn[data-symptom]').forEach(button => {
                 button.addEventListener('click', function () {
@@ -2731,34 +2799,22 @@
                 }
             });
 
-            // Clear all button
+            // Clear all button with confirmation
             clearAllBtn.addEventListener('click', clearAllSymptoms);
 
             // Form submission handler
             diagnosisForm.addEventListener('submit', function (e) {
                 if (selectedSymptoms.length === 0) {
                     e.preventDefault();
-                    // Show a more elegant error message
-                    const errorDiv = document.createElement('div');
-                    errorDiv.className = 'alert alert-danger mt-3';
-                    errorDiv.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i> Please add at least one symptom before diagnosis.';
-                    errorDiv.style.animation = 'fadeIn 0.5s ease';
-
-                    // Remove any existing error
-                    const existingError = this.querySelector('.alert-danger');
-                    if (existingError) {
-                        existingError.remove();
-                    }
-
-                    this.insertBefore(errorDiv, this.firstChild);
-
-                    // Auto-remove error after 5 seconds
-                    setTimeout(() => {
-                        errorDiv.style.opacity = '0';
-                        setTimeout(() => errorDiv.remove(), 300);
-                    }, 5000);
-
+                    showError('Please add at least one symptom before diagnosis.', this);
                     return;
+                }
+
+                if (selectedSymptoms.length > 10) {
+                    if (!confirm(`You've selected ${selectedSymptoms.length} symptoms. For best results, we recommend focusing on 3-5 main symptoms. Continue anyway?`)) {
+                        e.preventDefault();
+                        return;
+                    }
                 }
 
                 // Update hidden input with selected symptoms
@@ -2790,6 +2846,9 @@
             if (!selectedSymptoms.includes(symptom)) {
                 selectedSymptoms.push(symptom);
 
+                // Save to localStorage
+                saveSymptomsToStorage();
+
                 // Remove "no symptoms" message if it exists
                 const noSymptomsMsg = selectedSymptomsContainer.querySelector('.no-symptoms');
                 if (noSymptomsMsg) {
@@ -2806,7 +2865,7 @@
                 symptomTag.style.transform = 'translateY(20px)';
                 symptomTag.innerHTML = `
                     ${displayName}
-                    <button class="remove-tag" data-symptom="${symptom}" type="button">
+                    <button class="remove-tag" data-symptom="${symptom}" type="button" aria-label="Remove ${displayName}">
                         <i class="fas fa-times"></i>
                     </button>
                 `;
@@ -2825,7 +2884,7 @@
                     removeSymptom(symptom);
                 });
 
-                // Update diagnose button
+                // Update diagnose button and clear button
                 updateDiagnoseButton();
 
                 // Play a subtle success sound effect (optional)
@@ -2837,6 +2896,9 @@
         function removeSymptom(symptom) {
             // Remove from array
             selectedSymptoms = selectedSymptoms.filter(s => s !== symptom);
+
+            // Save to localStorage
+            saveSymptomsToStorage();
 
             // Remove from DOM with animation
             const symptomTag = document.querySelector(`.symptom-tag .remove-tag[data-symptom="${symptom}"]`)?.closest('.symptom-tag');
@@ -2863,51 +2925,147 @@
                 }, 300);
             }
 
-            // Update diagnose button
+            // Update diagnose button and clear button
             updateDiagnoseButton();
         }
 
-        // Clear all symptoms
+        // Clear all symptoms with confirmation
         function clearAllSymptoms() {
-            // Animate out all symptoms
-            const symptomTags = selectedSymptomsContainer.querySelectorAll('.symptom-tag');
-            symptomTags.forEach(tag => {
-                tag.style.opacity = '0';
-                tag.style.transform = 'translateY(-20px)';
-            });
+            if (selectedSymptoms.length === 0) return;
+            
+            // Show confirmation dialog
+            if (confirm(`Are you sure you want to clear all ${selectedSymptoms.length} selected symptoms?`)) {
+                // Animate out all symptoms
+                const symptomTags = selectedSymptomsContainer.querySelectorAll('.symptom-tag');
+                symptomTags.forEach(tag => {
+                    tag.style.opacity = '0';
+                    tag.style.transform = 'translateY(-20px)';
+                });
 
-            // Clear array after animation
-            setTimeout(() => {
-                selectedSymptoms = [];
-                selectedSymptomsContainer.innerHTML = '';
-
-                // Add no symptoms message
-                const noSymptomsMsg = document.createElement('div');
-                noSymptomsMsg.className = 'no-symptoms';
-                noSymptomsMsg.innerHTML = 'No symptoms selected yet. Start typing above or select from common symptoms.';
-                noSymptomsMsg.style.opacity = '0';
-                selectedSymptomsContainer.appendChild(noSymptomsMsg);
-
+                // Clear array after animation
                 setTimeout(() => {
-                    noSymptomsMsg.style.opacity = '1';
-                }, 10);
+                    selectedSymptoms = [];
+                    
+                    // Clear localStorage
+                    localStorage.removeItem('smartmed_symptoms');
+                    
+                    selectedSymptomsContainer.innerHTML = '';
 
-                updateDiagnoseButton();
-            }, 300);
+                    // Add no symptoms message
+                    const noSymptomsMsg = document.createElement('div');
+                    noSymptomsMsg.className = 'no-symptoms';
+                    noSymptomsMsg.innerHTML = 'No symptoms selected yet. Start typing above or select from common symptoms.';
+                    noSymptomsMsg.style.opacity = '0';
+                    selectedSymptomsContainer.appendChild(noSymptomsMsg);
+
+                    setTimeout(() => {
+                        noSymptomsMsg.style.opacity = '1';
+                    }, 10);
+
+                    updateDiagnoseButton();
+                    
+                    // Show success message
+                    showNotification('All symptoms have been cleared.', 'success');
+                }, 300);
+            }
         }
 
-        // Update diagnose button state
+        // Update diagnose button and clear button state
         function updateDiagnoseButton() {
             if (selectedSymptoms.length > 0) {
                 diagnoseBtn.disabled = false;
-                diagnoseBtn.innerHTML = `<i class="fas fa-stethoscope"></i> Start AI Diagnosis (${selectedSymptoms.length} symptoms)`;
-
-                // Add a subtle pulse animation
+                btnTextSpan.textContent = `Start AI Diagnosis (${selectedSymptoms.length} symptoms)`;
+                
+                // Show and enable clear all button
+                clearAllContainer.style.display = 'flex';
+                clearAllBtn.disabled = false;
+                clearAllBtn.innerHTML = `<i class="fas fa-trash-alt"></i> Clear All Symptoms (${selectedSymptoms.length})`;
+                
+                // Add a subtle pulse animation to diagnose button
                 diagnoseBtn.style.animation = 'pulse 2s infinite';
             } else {
                 diagnoseBtn.disabled = true;
-                diagnoseBtn.innerHTML = `<i class="fas fa-stethoscope"></i> Start AI Diagnosis`;
+                btnTextSpan.textContent = 'Start AI Diagnosis';
+                
+                // Hide and disable clear all button
+                clearAllContainer.style.display = 'none';
+                clearAllBtn.disabled = true;
+                
                 diagnoseBtn.style.animation = 'none';
+            }
+        }
+
+        // Show error message
+        function showError(message, form) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'alert alert-danger mt-3';
+            errorDiv.innerHTML = `<i class="fas fa-exclamation-circle me-2"></i> ${message}`;
+            errorDiv.style.animation = 'fadeIn 0.5s ease';
+
+            // Remove any existing error
+            const existingError = form.querySelector('.alert-danger');
+            if (existingError) {
+                existingError.remove();
+            }
+
+            form.insertBefore(errorDiv, form.firstChild);
+
+            // Auto-remove error after 5 seconds
+            setTimeout(() => {
+                errorDiv.style.opacity = '0';
+                setTimeout(() => errorDiv.remove(), 300);
+            }, 5000);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'} me-2"></i>
+                ${message}
+            `;
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.zIndex = '9999';
+            notification.style.minWidth = '300px';
+            notification.style.boxShadow = 'var(--shadow-hover)';
+            notification.style.animation = 'fadeIn 0.5s ease';
+            
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Save symptoms to localStorage
+        function saveSymptomsToStorage() {
+            try {
+                localStorage.setItem('smartmed_symptoms', JSON.stringify(selectedSymptoms));
+            } catch (e) {
+                console.warn('Could not save symptoms to localStorage:', e);
+            }
+        }
+
+        // Load symptoms from localStorage
+        function loadSymptomsFromStorage() {
+            try {
+                const saved = localStorage.getItem('smartmed_symptoms');
+                if (saved) {
+                    const symptoms = JSON.parse(saved);
+                    if (symptoms && symptoms.length > 0) {
+                        // Ask user if they want to restore
+                        if (confirm(`You have ${symptoms.length} previously saved symptoms. Would you like to restore them?`)) {
+                            symptoms.forEach(symptom => addSymptom(symptom));
+                        }
+                    }
+                }
+            } catch (e) {
+                console.warn('Could not load symptoms from localStorage:', e);
             }
         }
 
