@@ -142,9 +142,7 @@ SmartMed/
 │   ├── index.html              # Main diagnosis page
 
  
-Here's the updated section with Jupyter and VS Code included:
-
-```html
+```
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
   <div style="border: 1px solid #3498db; border-radius: 8px; padding: 15px; text-align: center; background: white;">
     <strong>Flask 2.3.3</strong><br>
@@ -181,9 +179,6 @@ Here's the updated section with Jupyter and VS Code included:
 </div>
 ```
 
-And here's the complete updated section including a development tools description:
-
-```html
 ## 🛠️ Technology Stack
 
 ### Development Environment
