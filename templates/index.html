@@ -991,11 +991,15 @@
         }
 
         /* Diagnosis Button */
-        .diagnose-button-container {
-            text-align: center;
-            padding: 2rem 0;
-            position: center;
-        }
+.diagnose-button-container {
+    display: flex;
+    justify-content: center; /* This centers horizontally */
+    align-items: center; /* This centers vertically */
+    padding: 2rem 0;
+    width: 100%;
+    position: relative; /* Creates positioning context */
+    min-height: 100px; /* Prevents container collapse */
+}
 
 .diagnose-btn {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
@@ -1012,7 +1016,7 @@
     align-items: center;
     justify-content: center;
     width: 380px;
-    position: fixed;
+    /* position: fixed; */
     overflow: hidden;
     white-space: nowrap;
 }
