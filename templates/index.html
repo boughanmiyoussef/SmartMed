@@ -992,29 +992,29 @@
 
         /* Diagnosis Button */
  .diagnose-button-container {
-    text-align: center; /* Keep this */
+    text-align: center; /* fallback */
     padding: 2rem 0;
-    width: 100%;
-    /* Remove: position: center; */
+    /* Remove invalid "position: center" */
 }
 
 .diagnose-btn {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     color: white;
     border: none;
-    padding: 1.3rem 2.5rem;
+    padding: 1.3rem 0;
     font-size: 1.2rem;
     font-weight: 600;
     border-radius: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
-    display: block; /* ← Changed to block */
-    margin: 0 auto; /* ← Auto margins center block elements */
-    width: 380px;
+    /* CHANGE THESE LINES 👇 */
+    display: block;
+    width: 450px;
+    margin: 0 auto; /* ← This ensures perfect centering */
     text-align: center;
-    line-height: normal;
     white-space: nowrap;
+    overflow: hidden;
 }
         /* .diagnose-btn::before {
             content: '';
