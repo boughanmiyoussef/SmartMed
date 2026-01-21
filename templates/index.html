@@ -997,33 +997,24 @@
             position: center;
         }
 
-.diagnose-button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 0;
-    width: 100%;
-    min-height: 100px;
-}
-
 .diagnose-btn {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     color: white;
     border: none;
-    padding: 1.3rem 1.5rem; /* ← add horizontal padding */
+    padding: 1.3rem 0; 
     font-size: 1.2rem;
     font-weight: 600;
     border-radius: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
-    display: block;
-    width: 100%;
-    max-width: 380px;
-    text-align: center; /* ← THIS IS KEY */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 450px;
+    /* position: fixed; */
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis; /* optional: prevents overflow */
 }
         /* .diagnose-btn::before {
             content: '';
