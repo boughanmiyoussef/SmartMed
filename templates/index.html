@@ -994,7 +994,7 @@
         .diagnose-button-container {
             text-align: center;
             padding: 2rem 0;
-            /* position: center; */
+            position: center;
         }
 
 .diagnose-btn {
@@ -1018,7 +1018,13 @@
 }
         .diagnose-btn::before {
             content: '';
-            position: absolute;
+                display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 380px;
+    position: fixed;
+    overflow: hidden;
+    white-space: nowrap;
             top: 0;
             left: -100%;
             width: 100%;
