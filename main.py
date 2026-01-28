@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, send_from_directory
 import os
 import numpy as np
 import pandas as pd
@@ -11,18 +11,22 @@ app = Flask(__name__)
 
 # ---------- Load Model & Data ---------- #
 try:
-    # Load model
-    model_paths = ['svc.pkl', 'models/svc.pkl']
+    # Try different possible locations for svc.pkl
+    possible_model_paths = [
+        'svc.pkl',
+        'models/svc.pkl',
+        '../svc.pkl'
+    ]
+    
     svc = None
-    for path in model_paths:
+    for path in possible_model_paths:
         if os.path.exists(path):
-            with open(path, 'rb') as f:
-                svc = pickle.load(f)
-            print(f"Model loaded from: {path}")
+            svc = pickle.load(open(path, 'rb'))
+            print(f"✅ Model loaded from: {path}")
             break
     
     if svc is None:
-        print("Warning: Using dummy model - svc.pkl not found")
+        print("❌ Could not find svc.pkl. Using dummy model.")
         from sklearn.svm import SVC
         svc = SVC()
         X_dummy = np.array([[0, 0], [1, 1]])
@@ -30,20 +34,35 @@ try:
         svc.fit(X_dummy, y_dummy)
     
     # Load datasets
-    datasets_path = 'datasets/'
-    desc_df = pd.read_csv(os.path.join(datasets_path, 'description.csv'))
-    prec_df = pd.read_csv(os.path.join(datasets_path, 'precautions_df.csv'))
-    med_df = pd.read_csv(os.path.join(datasets_path, 'medications.csv'))
-    diet_df = pd.read_csv(os.path.join(datasets_path, 'diets.csv'))
-    work_df = pd.read_csv(os.path.join(datasets_path, 'workout_df.csv'))
-    print("All datasets loaded successfully")
-    
+    try:
+        desc_df = pd.read_csv('datasets/description.csv')
+        prec_df = pd.read_csv('datasets/precautions_df.csv')
+        med_df = pd.read_csv('datasets/medications.csv')
+        diet_df = pd.read_csv('datasets/diets.csv')
+        work_df = pd.read_csv('datasets/workout_df.csv')
+        print("✅ All datasets loaded successfully!")
+    except Exception as e:
+        print(f"❌ Error loading datasets: {e}")
+        # Create dummy dataframes for testing
+        desc_df = pd.DataFrame({'Disease': ['Fungal infection', 'Allergy'], 
+                                'Description': ['Dummy description 1', 'Dummy description 2']})
+        prec_df = pd.DataFrame({'Disease': ['Fungal infection', 'Allergy'],
+                                'Precaution_1': ['Precaution 1', 'Precaution 1'],
+                                'Precaution_2': ['Precaution 2', 'Precaution 2']})
+        med_df = pd.DataFrame({'Disease': ['Fungal infection', 'Allergy'],
+                               'Medication': "['Medicine 1', 'Medicine 2']"})
+        diet_df = pd.DataFrame({'Disease': ['Fungal infection', 'Allergy'],
+                                'Diet': "['Diet 1', 'Diet 2']"})
+        work_df = pd.DataFrame({'disease': ['Fungal infection', 'Allergy'],
+                                'workout': "['Workout 1', 'Workout 2']"})
+        
 except Exception as e:
-    print(f"Error loading files: {e}")
+    print(f"❌ Error loading files: {e}")
+    # Create minimal data for testing
     svc = None
     desc_df = prec_df = med_df = diet_df = work_df = None
 
-# ---------- Symptom Dictionary ---------- #
+# ---------- Symptom Dictionary (132 symptoms) ---------- #
 symptoms_dict = {
     'itching': 0, 'skin_rash': 1, 'nodal_skin_eruptions': 2, 'continuous_sneezing': 3, 'shivering': 4, 'chills': 5,
     'joint_pain': 6, 'stomach_pain': 7, 'acidity': 8, 'ulcers_on_tongue': 9, 'muscle_wasting': 10, 'vomiting': 11,
@@ -76,198 +95,297 @@ symptoms_dict = {
     'blister': 129, 'red_sore_around_nose': 130, 'yellow_crust_ooze': 131
 }
 
-# Create mapping for space version symptoms
-symptoms_space_to_underscore = {s.replace('_', ' '): s for s in symptoms_dict.keys()}
+# Create a mapping from "space version" to "underscore version"
+symptoms_space_to_underscore = {}
+for symptom_underscore in symptoms_dict.keys():
+    symptom_space = symptom_underscore.replace('_', ' ')
+    symptoms_space_to_underscore[symptom_space] = symptom_underscore
 
 # ---------- Index to Disease Mapping ---------- #
 idx2dis = {
-    15: 'Fungal infection', 4: 'Allergy', 16: 'GERD', 9: 'Chronic cholestasis', 14: 'Drug Reaction',
-    33: 'Peptic ulcer diseae', 1: 'AIDS', 12: 'Diabetes', 17: 'Gastroenteritis', 6: 'Bronchial Asthma',
-    23: 'Hypertension', 30: 'Migraine', 7: 'Cervical spondylosis', 32: 'Paralysis (brain hemorrhage)',
-    28: 'Jaundice', 29: 'Malaria', 8: 'Chicken pox', 11: 'Dengue', 37: 'Typhoid', 40: 'hepatitis A',
-    19: 'Hepatitis B', 20: 'Hepatitis C', 21: 'Hepatitis D', 22: 'Hepatitis E', 3: 'Alcoholic hepatitis',
-    36: 'Tuberculosis', 10: 'Common Cold', 34: 'Pneumonia', 13: 'Dimorphic hemmorhoids(piles)',
-    18: 'Heart attack', 39: 'Varicose veins', 26: 'Hypothyroidism', 24: 'Hyperthyroidism',
-    25: 'Hypoglycemia', 31: 'Osteoarthristis', 5: 'Arthritis', 0: '(vertigo) Paroymsal Positional Vertigo',
-    2: 'Acne', 38: 'Urinary tract infection', 35: 'Psoriasis', 27: 'Impetigo'
+    0: '(vertigo) Paroymsal Positional Vertigo',
+    1: 'AIDS',
+    2: 'Acne',
+    3: 'Alcoholic hepatitis',
+    4: 'Allergy',
+    5: 'Arthritis',
+    6: 'Bronchial Asthma',
+    7: 'Cervical spondylosis',
+    8: 'Chicken pox',
+    9: 'Chronic cholestasis',
+    10: 'Common Cold',
+    11: 'Dengue',
+    12: 'Diabetes',
+    13: 'Dimorphic hemmorhoids(piles)',
+    14: 'Drug Reaction',
+    15: 'Fungal infection',
+    16: 'GERD',
+    17: 'Gastroenteritis',
+    18: 'Heart attack',
+    19: 'Hepatitis B',
+    20: 'Hepatitis C',
+    21: 'Hepatitis D',
+    22: 'Hepatitis E',
+    23: 'Hypertension',
+    24: 'Hyperthyroidism',
+    25: 'Hypoglycemia',
+    26: 'Hypothyroidism',
+    27: 'Impetigo',
+    28: 'Jaundice',
+    29: 'Malaria',
+    30: 'Migraine',
+    31: 'Osteoarthristis',
+    32: 'Paralysis (brain hemorrhage)',
+    33: 'Peptic ulcer diseae',
+    34: 'Pneumonia',
+    35: 'Psoriasis',
+    36: 'Tuberculosis',
+    37: 'Typhoid',
+    38: 'Urinary tract infection',
+    39: 'Varicose veins',
+    40: 'hepatitis A'
 }
 
-# ---------- Helper Functions ---------- #
+# ---------- Symptom Formatting Function ---------- #
 def format_symptom(symptom):
-    """Convert symptom to standard format"""
-    if not isinstance(symptom, str):
+    """Convert symptom to standard format (underscore, lowercase)"""
+    if not symptom or not isinstance(symptom, str):
         return None
     
     symptom = symptom.strip().lower()
     
+    # Try direct match
     if symptom in symptoms_dict:
         return symptom
     
+    # Try replacing spaces with underscores
     symptom_underscore = symptom.replace(' ', '_')
     if symptom_underscore in symptoms_dict:
         return symptom_underscore
     
+    # Try with underscore to space mapping
     if symptom in symptoms_space_to_underscore:
         return symptoms_space_to_underscore[symptom]
     
+    # Try common variations
+    variations = [
+        symptom,
+        symptom.replace(' ', '_'),
+        symptom.replace('-', '_'),
+        symptom.replace('.', ''),
+        symptom.replace('(', '').replace(')', '')
+    ]
+    
+    for var in variations:
+        if var in symptoms_dict:
+            return var
+    
     return None
 
+# ---------- String to List Parsing Function ---------- #
 def parse_string_to_list(value):
-    """Parse string representation of list to actual list"""
+    """
+    Parse a string representation of a list to an actual list.
+    Handles cases like: "['item1', 'item2', 'item3']"
+    """
     if pd.isna(value):
         return []
     
+    # If already a list, return it
     if isinstance(value, list):
         return [str(item).strip() for item in value if pd.notna(item) and str(item).strip()]
     
+    # If it's a string
     if isinstance(value, str):
         value = value.strip()
+        
+        # Check if it looks like a Python list string representation
         if value.startswith('[') and value.endswith(']'):
             try:
+                # Use ast.literal_eval for safe evaluation
                 parsed_list = ast.literal_eval(value)
                 if isinstance(parsed_list, list):
                     return [str(item).strip() for item in parsed_list if str(item).strip()]
-            except:
-                value = value[1:-1]
-                items = [item.strip().strip("'\"") for item in value.split(',') if item.strip()]
-                return items
+            except (ValueError, SyntaxError):
+                # If ast.literal_eval fails, try manual parsing
+                try:
+                    # Remove brackets
+                    value = value[1:-1].strip()
+                    # Split by commas, handling quotes
+                    items = []
+                    current = ''
+                    in_quotes = False
+                    quote_char = None
+                    
+                    for char in value:
+                        if char in ['"', "'"]:
+                            if in_quotes and char == quote_char:
+                                in_quotes = False
+                            elif not in_quotes:
+                                in_quotes = True
+                                quote_char = char
+                            current += char
+                        elif char == ',' and not in_quotes:
+                            # Remove quotes from the item
+                            item = current.strip().strip("'\"")
+                            if item:
+                                items.append(item)
+                            current = ''
+                        else:
+                            current += char
+                    
+                    # Add the last item
+                    if current.strip():
+                        item = current.strip().strip("'\"")
+                        if item:
+                            items.append(item)
+                    
+                    return items
+                except:
+                    # Last resort: simple split
+                    value = value[1:-1]  # Remove brackets
+                    items = [item.strip().strip("'\" ") for item in value.split(',') if item.strip()]
+                    return items
+        
+        # If it's not a list representation, return as single item list
         return [value] if value else []
     
+    # For other types, convert to string and return as single item list
     return [str(value).strip()] if str(value).strip() else []
 
+# ---------- Prediction Function ---------- #
 def get_predicted_value(patient_symptoms):
-    """Predict disease from symptoms"""
+    """Predict disease from symptoms list"""
     try:
         if svc is None:
-            return "Unknown"
+            return "Model not available"
         
         input_vector = np.zeros(len(symptoms_dict))
+        valid_symptoms_count = 0
         
         for item in patient_symptoms:
             formatted_symptom = format_symptom(item)
+            
             if formatted_symptom and formatted_symptom in symptoms_dict:
                 input_vector[symptoms_dict[formatted_symptom]] = 1
+                valid_symptoms_count += 1
+        
+        if valid_symptoms_count == 0:
+            return None
         
         predicted_idx = svc.predict([input_vector])[0]
-        return idx2dis.get(predicted_idx, "Unknown Disease")
+        predicted_disease = idx2dis.get(predicted_idx, "Unknown Disease")
+        
+        return predicted_disease
         
     except Exception as e:
-        print(f"Prediction error: {e}")
-        return "Unknown"
+        print(f"Error in prediction: {e}")
+        return "Prediction error"
 
-def get_disease_info(disease):
-    """Get all information for a disease"""
+# ---------- Helper Function ---------- #
+def helper(dis):
+    """Get all recommendations for a disease"""
     try:
         if desc_df is None:
             return "No description available.", [], [], [], []
         
         # Get description
-        desc_rows = desc_df[desc_df['Disease'] == disease]['Description'].values
+        desc_rows = desc_df[desc_df['Disease'] == dis]['Description'].values
         desc = " ".join(desc_rows) if len(desc_rows) > 0 else "No description available."
         
         # Get precautions
         pre = []
-        prec_row = prec_df[prec_df['Disease'] == disease]
+        prec_row = prec_df[prec_df['Disease'] == dis]
         if not prec_row.empty:
             pre = [str(p).strip() for p in prec_row[['Precaution_1', 'Precaution_2', 'Precaution_3', 'Precaution_4']].values[0] if pd.notna(p) and str(p).strip()]
         
-        # Get medications
+        # Get medications - using the new parsing function
         med = []
-        med_row = med_df[med_df['Disease'] == disease]['Medication']
+        med_row = med_df[med_df['Disease'] == dis]['Medication']
         if not med_row.empty:
-            med = parse_string_to_list(med_row.values[0])
+            med_value = med_row.values[0]
+            med = parse_string_to_list(med_value)
         
-        # Get diet
+        # Get diet recommendations - using the new parsing function
         die = []
-        diet_row = diet_df[diet_df['Disease'] == disease]['Diet']
+        diet_row = diet_df[diet_df['Disease'] == dis]['Diet']
         if not diet_row.empty:
-            die = parse_string_to_list(diet_row.values[0])
+            diet_value = diet_row.values[0]
+            die = parse_string_to_list(diet_value)
         
-        # Get workout
+        # Get workout recommendations - using the new parsing function
         wrk = []
-        work_row = work_df[work_df['disease'] == disease]['workout']
+        work_row = work_df[work_df['disease'] == dis]['workout']
         if not work_row.empty:
-            wrk = parse_string_to_list(work_row.values[0])
+            workout_value = work_row.values[0]
+            wrk = parse_string_to_list(workout_value)
         
         return desc, pre, med, die, wrk
-        
     except Exception as e:
-        print(f"Error getting disease info: {e}")
-        return "No information available.", [], [], [], []
+        print(f"Error in helper function: {e}")
+        return "No description available.", [], [], [], []
 
 # ---------- Flask Routes ---------- #
 @app.route('/')
-def home():
+def index():
+    """Home page"""
     return render_template('index.html')
 
-@app.route('/predict', methods=['POST'])
+@app.route('/doctor/<path:filename>')
+def serve_doctor(filename):
+    """Serve doctor image"""
+    doctor_folder = os.path.join(app.root_path, 'doctor')
+    return send_from_directory(doctor_folder, filename)
+
+@app.route('/predict', methods=['GET', 'POST'])
 def predict():
-    try:
-        symptoms_text = request.form.get('symptoms', '')
+    """Handle symptom prediction with GET and POST"""
+    if request.method == 'GET':
+        # GET request - just show the form
+        return render_template('index.html')
+    
+    elif request.method == 'POST':
+        # POST request - process symptoms
+        try:
+            # Get symptoms from the form
+            symptoms_text = request.form.get('symptoms', '')
+            
+            if not symptoms_text:
+                return render_template('index.html', 
+                                     error='Please enter at least one symptom')
+            
+            # Split by comma and clean
+            user_symptoms = [s.strip() for s in symptoms_text.split(',')]
+            user_symptoms = [symptom.strip("[]' \"") for symptom in user_symptoms]
+            
+            # Get prediction
+            predicted_disease = get_predicted_value(user_symptoms)
+            
+            if not predicted_disease:
+                return render_template('index.html',
+                                     error='No valid symptoms entered. Please check and try again.')
+            
+            if predicted_disease == "Unknown Disease":
+                return render_template('index.html',
+                                     error='Could not identify disease. Please try different symptoms.')
+            
+            # Get recommendations
+            desc, pre, med, die, wrkout = helper(predicted_disease)
+                        
+            return render_template('index.html',
+                                 disease=predicted_disease,
+                                 description=desc,
+                                 precautions=pre,
+                                 medications=med,
+                                 diets=die,
+                                 workouts=wrkout,
+                                 input_symptoms=symptoms_text)
         
-        if not symptoms_text:
-            return render_template('index.html', error='Please enter symptoms')
-        
-        # Process symptoms
-        user_symptoms = [s.strip() for s in symptoms_text.split(',')]
-        user_symptoms = [s.strip("[]'\"") for s in user_symptoms]
-        
-        # Get prediction
-        predicted_disease = get_predicted_value(user_symptoms)
-        
-        if not predicted_disease:
-            return render_template('index.html', error='Could not make prediction')
-        
-        # Get disease information
-        desc, pre, med, die, wrk = get_disease_info(predicted_disease)
-        
-        return render_template('index.html',
-                             disease=predicted_disease,
-                             description=desc,
-                             precautions=pre,
-                             medications=med,
-                             diets=die,
-                             workouts=wrk,
-                             input_symptoms=symptoms_text)
-        
-    except Exception as e:
-        return render_template('index.html', error=f'Error: {str(e)}')
+        except Exception as e:
+            return render_template('index.html',
+                                 error=f'An error occurred: {str(e)}')
 
-@app.route('/api/predict', methods=['POST'])
-def api_predict():
-    """API endpoint for predictions"""
-    try:
-        data = request.json
-        symptoms = data.get('symptoms', [])
-        
-        if not symptoms:
-            return jsonify({'error': 'No symptoms provided'}), 400
-        
-        predicted_disease = get_predicted_value(symptoms)
-        desc, pre, med, die, wrk = get_disease_info(predicted_disease)
-        
-        return jsonify({
-            'disease': predicted_disease,
-            'description': desc,
-            'precautions': pre,
-            'medications': med,
-            'diets': die,
-            'workouts': wrk
-        })
-        
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-@app.route('/health')
-def health():
-    """Health check endpoint"""
-    return jsonify({
-        'status': 'healthy',
-        'model_loaded': svc is not None,
-        'datasets_loaded': all(df is not None for df in [desc_df, prec_df, med_df, diet_df, work_df])
-    })
-
-# ---------- Run Application ---------- #
-if __name__ == '__main__':
+if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+    debug_mode = os.environ.get('FLASK_DEBUG', '0') == '1'
+    app.run(debug=debug_mode, host='0.0.0.0', port=port)
