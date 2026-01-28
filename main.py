@@ -58,7 +58,6 @@ try:
         
 except Exception as e:
     print(f"❌ Error loading files: {e}")
-    # Create minimal data for testing
     svc = None
     desc_df = prec_df = med_df = diet_df = work_df = None
 
