@@ -11,7 +11,6 @@ app = Flask(__name__)
 
 # ---------- Load Model & Data ---------- #
 try:
-    # Try different possible locations for svc.pkl
     possible_model_paths = [
         'svc.pkl',
         'models/svc.pkl',
