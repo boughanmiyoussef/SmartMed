@@ -98,6 +98,7 @@ symptoms_space_to_underscore = {}
 for symptom_underscore in symptoms_dict.keys():
     symptom_space = symptom_underscore.replace('_', ' ')
     symptoms_space_to_underscore[symptom_space] = symptom_underscore
+    
 
 # ---------- Index to Disease Mapping ---------- #
 idx2dis = {
@@ -146,6 +147,7 @@ idx2dis = {
 
 # ---------- Symptom Formatting Function ---------- #
 def format_symptom(symptom):
+    
     """Convert symptom to standard format (underscore, lowercase)"""
     if not symptom or not isinstance(symptom, str):
         return None
