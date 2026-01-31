@@ -990,61 +990,42 @@
             transform: translateY(-2px);
         }
 
-        /* Diagnosis Button */
+        /* Diagnosis Button - FIXED CENTER */
         .diagnose-button-container {
             text-align: center;
             padding: 2rem 0;
-            position: center;
+            position: relative;
         }
 
-.diagnose-btn {
-    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-    color: white;
-    border: none;
-    padding: 1.3rem 0; 
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 450px;
-    /* position: fixed; */
-    overflow: hidden;
-    white-space: nowrap;
-}
-        /* .diagnose-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+        .diagnose-btn {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border: none;
+            padding: 1.3rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
+            display: inline-block;
+            min-width: 280px;
+            max-width: 100%;
+            position: relative;
+            margin: 0 auto;
         }
-
-        .diagnose-btn:hover::before {
-            left: 100%;
-        } */
 
         .diagnose-btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.02);
             box-shadow: 0 15px 40px rgba(0, 82, 204, 0.4);
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
         }
 
         .diagnose-btn:disabled {
             background: #cccccc;
             cursor: not-allowed;
-            transform: none;
+            transform: none !important;
             box-shadow: none;
-        }
-
-        .diagnose-btn:disabled::before {
-            display: none;
         }
 
         .diagnose-btn i {
@@ -1052,6 +1033,8 @@
             font-size: 1.3rem;
         }
 
+        /* Pulse animation removed - this was causing the shifting */
+        
         /* Advanced Spinner */
         .advanced-spinner {
             display: none;
@@ -1837,6 +1820,13 @@
             .feature-card,
             .testimonial-card {
                 padding: 1.5rem;
+            }
+            
+            /* Responsive button for mobile */
+            .diagnose-btn {
+                padding: 1.2rem 2.5rem;
+                min-width: 250px;
+                font-size: 1.1rem;
             }
         }
 
@@ -2774,7 +2764,7 @@
                 // The form will submit normally
             });
 
-            // Update diagnose button state
+            // Update diagnose button state - REMOVED PULSE ANIMATION
             updateDiagnoseButton();
         });
 
@@ -2896,18 +2886,15 @@
             }, 300);
         }
 
-        // Update diagnose button state
+        // Update diagnose button state - SIMPLIFIED
         function updateDiagnoseButton() {
             if (selectedSymptoms.length > 0) {
                 diagnoseBtn.disabled = false;
                 diagnoseBtn.innerHTML = `<i class="fas fa-stethoscope"></i> Start AI Diagnosis`;
-
-                // Add a subtle pulse animation
-                diagnoseBtn.style.animation = 'pulse 2s infinite';
+                // No animation added - this was causing the shifting
             } else {
                 diagnoseBtn.disabled = true;
                 diagnoseBtn.innerHTML = `<i class="fas fa-stethoscope"></i> Start AI Diagnosis`;
-                diagnoseBtn.style.animation = 'none';
             }
         }
 
