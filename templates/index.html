@@ -443,6 +443,36 @@
             color: var(--accent-purple);
         }
 
+        /* FIXED: Hero Section Button Padding */
+        .hero-section .diagnose-btn {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border: none;
+            padding: 1rem 2rem !important; /* Reduced padding */
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 82, 204, 0.3);
+            display: inline-block;
+            min-width: 240px; /* Reduced min-width */
+            max-width: 100%;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .hero-section .diagnose-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 82, 204, 0.4);
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+        }
+
+        .hero-section .diagnose-btn i {
+            margin-right: 8px; /* Reduced icon spacing */
+            font-size: 1.1rem;
+        }
+
         /* Doctor Image Container */
         .doctor-image-container {
             position: relative;
@@ -1827,6 +1857,13 @@
                 padding: 1.2rem 2.5rem;
                 min-width: 250px;
                 font-size: 1.1rem;
+            }
+            
+            /* Hero section button mobile */
+            .hero-section .diagnose-btn {
+                padding: 0.9rem 1.8rem !important;
+                min-width: 220px;
+                font-size: 1rem;
             }
         }
 
