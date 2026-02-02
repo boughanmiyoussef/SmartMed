@@ -14,6 +14,7 @@
 
   ## 📌 Table of Contents
   - [Overview](#-overview)
+  - [Screenshots](#-screenshots)
   - [System Architecture](#-system-architecture)
   - [Live Demo](#-live-demo)
   - [Quick Start](#-quick-start)
@@ -40,6 +41,17 @@
   - **Modern Web Interface**: Responsive, user-friendly design with real-time feedback
   - **Local Deployment**: Runs entirely on your machine for privacy and security
   - **Educational Focus**: Designed for AI/ML learning and healthcare technology demonstrations
+
+  ## 📸 Screenshots
+
+![SmartMed1](screenshots/Smartmed1.png)
+![SmartMed2](screenshots/Smartmed2.png)
+![SmartMed3](screenshots/Smartmed3.png)
+![SmartMed4](screenshots/Smartmed4.png)
+![SmartMed5](screenshots/Smartmed5.png)
+![SmartMed6](screenshots/Smartmed6.png)
+![SmartMed7](screenshots/Smartmed7.png)
+
 
   ## 🏗️ System Architecture
 
