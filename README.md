@@ -45,8 +45,6 @@
 
   ## 📸 Screenshots
 
-  <div align="center">
-
   ### SmartMed AI Interface Gallery
 
   <div class="screenshots-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
@@ -90,8 +88,6 @@
         <p style="margin: 0; color: #666; font-size: 14px;">End-to-end healthcare recommendations and precautions</p>
       </div>
     </div>
-
-  </div>
 
   </div>
 
