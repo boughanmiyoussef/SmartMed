@@ -52,7 +52,7 @@
   <div class="screenshots-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
     
     <div class="screenshot-item" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-      <img src="screenshots/screenshot1.png" alt="SmartMed AI Main Interface" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
+      <img src="./screenshots/Smartmed1.png" alt="SmartMed AI Main Interface" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
       <div style="padding: 15px;">
         <h4 style="margin: 0 0 10px 0; color: #2c3e50;">🏠 Main Dashboard</h4>
         <p style="margin: 0; color: #666; font-size: 14px;">Clean, intuitive interface for symptom input and diagnosis</p>
