@@ -68,7 +68,7 @@
     </div>
 
     <div class="screenshot-item" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-      <img src="screenshots/screenshot3.png" alt="Diagnosis Results" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
+      <img src="../SmartMed/screenshots/Smartmed1.png" alt="Diagnosis Results" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
       <div style="padding: 15px;">
         <h4 style="margin: 0 0 10px 0; color: #2c3e50;">📋 Diagnosis Results</h4>
         <p style="margin: 0; color: #666; font-size: 14px;">Comprehensive disease prediction and analysis</p>
@@ -76,7 +76,7 @@
     </div>
 
     <div class="screenshot-item" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-      <img src="screenshots/screenshot4.png" alt="Treatment Recommendations" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
+      <img src="../SmartMed/screenshots/Smartmed2.png" alt="Treatment Recommendations" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
       <div style="padding: 15px;">
         <h4 style="margin: 0 0 10px 0; color: #2c3e50;">💊 Treatment Plan</h4>
         <p style="margin: 0; color: #666; font-size: 14px;">Detailed medications, diet, and exercise recommendations</p>
@@ -84,7 +84,7 @@
     </div>
 
     <div class="screenshot-item" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-      <img src="screenshots/screenshot5.png" alt="Complete Care Plan" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
+      <img src="../SmartMed/screenshots/Smartmed1.png" alt="Complete Care Plan" style="width: 100%; height: auto; border-bottom: 1px solid #e0e0e0;">
       <div style="padding: 15px;">
         <h4 style="margin: 0 0 10px 0; color: #2c3e50;">🏥 Complete Care Package</h4>
         <p style="margin: 0; color: #666; font-size: 14px;">End-to-end healthcare recommendations and precautions</p>
