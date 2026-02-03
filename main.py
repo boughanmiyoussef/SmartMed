@@ -90,32 +90,17 @@ except Exception as e:
 
 # ---------- Symptom Formatting Function ---------- #
 def format_symptom(symptom):
-    """Convert symptom to standard format (underscore, lowercase)"""
+    """Convert symptom to standard format (underscore, lowercase) - SIMPLIFIED"""
     if not symptom or not isinstance(symptom, str):
         return None
     
+    # SIMPLIFY: Just convert spaces to underscores and lowercase
     symptom = symptom.strip().lower()
+    symptom = symptom.replace(' ', '_')
     
-    # Try direct match
+    # Direct check (no complex variations needed)
     if symptom in symptoms_dict:
         return symptom
-    
-    # Try replacing spaces with underscores (for user input like "skin rash")
-    symptom_underscore = symptom.replace(' ', '_')
-    if symptom_underscore in symptoms_dict:
-        return symptom_underscore
-    
-    # Try common variations
-    variations = [
-        symptom,
-        symptom.replace(' ', '_'),
-        symptom.replace('-', '_'),
-        symptom.replace('(', '').replace(')', '')
-    ]
-    
-    for var in variations:
-        if var in symptoms_dict:
-            return var
     
     return None
 
