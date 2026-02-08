@@ -46,11 +46,11 @@ try:
         # Load training dataset to get symptom names
         training_data = pd.read_csv('datasets/Training.csv')
         
-        # 1. Generate symptoms_dict dynamically from column names (ONLY 132 original)
+        # 1. Generate symptoms_dict dynamically from column names
         symptom_columns = [col for col in training_data.columns if col != 'prognosis']
         symptoms_dict = {}
         for i, symptom in enumerate(symptom_columns):
-            symptoms_dict[symptom] = i  # 'itching' -> 0
+            symptoms_dict[symptom] = i
         
         # 2. Generate disease mapping using LabelEncoder
         from sklearn.preprocessing import LabelEncoder
@@ -94,11 +94,11 @@ def format_symptom(symptom):
     if not symptom or not isinstance(symptom, str):
         return None
     
-    # SIMPLIFY: Just convert spaces to underscores and lowercase
+    # convert spaces to underscores and lowercase
     symptom = symptom.strip().lower()
     symptom = symptom.replace(' ', '_')
     
-    # Direct check (no complex variations needed)
+    # Direct check
     if symptom in symptoms_dict:
         return symptom
     
@@ -235,7 +235,7 @@ def predict():
                 return render_template('index.html', 
                                      error='Please enter at least one symptom')
             
-            # Split by comma and clean - FIXED: convert spaces to underscores
+            # Split by comma and clean : convert spaces to underscores
             user_symptoms = [s.strip() for s in symptoms_text.split(',')]
             user_symptoms = [symptom.strip("[]' \"").replace(' ', '_') for symptom in user_symptoms]
             
