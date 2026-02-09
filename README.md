@@ -400,5 +400,6 @@
   *Local AI-powered diagnosis demonstration*
 
   </div>
+  https://docs.google.com/presentation/d/1mPMsybmyBTfx7OIjKJkgaon6bTI9KWOIaR4j08iZ8J4/edit?slide=id.g3b629d6d120_0_2460#slide=id.g3b629d6d120_0_2460
 
   ---
